@@ -1,0 +1,3 @@
+s7t_h_directory:
+    resource: "@S7tHDirectoryBundle/Resources/config/routing.yml"
+    prefix:   /

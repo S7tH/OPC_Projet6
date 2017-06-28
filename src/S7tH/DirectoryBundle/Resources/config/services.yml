@@ -1,0 +1,4 @@
+services:
+#    s7t_h_directory.example:
+#        class: S7tH\DirectoryBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
