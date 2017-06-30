@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}SnowTrickmania.com{% endblock %}</title>
+
+    
+
+{% block stylesheets %}
+
+    <!-- CDN Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    {% stylesheets filter='cssrewrite, ?scssphp, ?jsqueeze'
+        'bundles/s7thdirectory/magnific-popup/magnific-popup.css'
+        'bundles/s7thdirectory/css/creative.css'
+    %}
+        <!-- Theme CSS -->
+        <link href="{{ asset_url }}" rel="stylesheet" type="text/css">
+        
+    {% endstylesheets %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+{% endblock %}
+
+</head>
+{% block bodyup %}
+    <body id="page-top">
+{% endblock %}
+
+{% block navside %}
+    
+{% endblock %}
+
+
+
+    <header>
+{% block header %}
+
+        test
+
+{% endblock %}
+    </header>
+
+
+{% block page %}{% endblock %}
+
+    <footer>
+
+{% block footer %}{% endblock %}
+
+     </footer>
+
+{% block js %}
+    
+    <!-- CDN jQuery -->
+    <script 
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+    </script>
+
+    <!-- CDN Bootstrap Core JavaScript -->
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
+
+    <!-- Theme JavaScript + plugin-->    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    {% javascripts 
+        'bundles/s7thdirectory/magnific-popup/jquery.magnific-popup.js'
+        'bundles/s7thdirectory/scrollreveal/scrollreveal.js'
+        'bundles/s7thdirectory/js/creative.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    
+{% endblock %}
+
+</body>
+
+</html>

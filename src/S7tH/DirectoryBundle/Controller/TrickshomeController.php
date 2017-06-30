@@ -4,10 +4,10 @@ namespace S7tH\DirectoryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
+class TrickshomeController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('S7tHDirectoryBundle:Default:index.html.twig');
+        return $this->render('S7tHDirectoryBundle:Trickshome:index.html.twig');
     }
 }
