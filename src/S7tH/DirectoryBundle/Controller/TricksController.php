@@ -6,17 +6,12 @@ namespace S7tH\DirectoryBundle\Controller;
 use S7tH\DirectoryBundle\Entity\Tricks;
 /*end entities*/
 
+/*for my form*/
+use S7tH\DirectoryBundle\Form\TricksType;
+/*end form*/
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
-/*for my form*/
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-/*end form import*/
 
 class TricksController extends Controller
 {
@@ -31,29 +26,14 @@ class TricksController extends Controller
         $tricks = new Tricks();
 
         //create the formBuilder
-        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $tricks);
+        $form = $this->get('form.factory')->create(TricksType::class, $tricks);
 
-        //add the fields
-        $formBuilder
-            ->add('name',     TextType::class)
-            ->add('description',   TextareaType::class)
-            ->add('date',      DateType::class)
-            ->add('save',      SubmitType::class)
-        ;
-
-        //generate the formBuilder
-        $form = $formBuilder->getForm();
-
-        //if a form has been send so we are not displaying the form but send the form
-        if ($request->isMethod('POST'))
+        
+        //if a form has been send so we are not displaying the form but send the form and if the values are ok
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {
-            // we make the link between request/form
             // Now the variable $tricks contains the form values
-            $form->handleRequest($request);
-
-            // we check if the values are ok
-            if ($form->isValid())
-            {
+  
                 //we save our entity in the db
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($tricks);//create the request sql
@@ -63,7 +43,6 @@ class TricksController extends Controller
 
                 // We are displaying now the trick introduce page thanks a redirection to its route.
                 return $this->redirectToRoute('s7t_h_directory_trickview', array('id' => $tricks->getId()));
-            }
         }
 
         //if any send, we are displaying the form
