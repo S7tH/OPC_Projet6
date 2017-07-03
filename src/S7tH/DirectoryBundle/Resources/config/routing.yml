@@ -1,3 +1,11 @@
-s7t_h_directory_homepage:
+s7t_h_directory_tricklist:
     path:     /
-    defaults: { _controller: S7tHDirectoryBundle:Trickshome:index }
+    defaults: { _controller: S7tHDirectoryBundle:Tricks:index }
+
+s7t_h_directory_trickadd:
+    path:     /trick-add
+    defaults: { _controller: S7tHDirectoryBundle:Tricks:add }
+
+s7t_h_directory_trickview:
+    path:     /trick-view
+    defaults: { _controller: S7tHDirectoryBundle:Tricks:view }
