@@ -1,0 +1,26 @@
+{% extends "S7tHDirectoryBundle::layout.html.twig" %}
+
+{% block linkmenu %}
+    <li>
+        <a class="page-scroll" href="#page-top"><span class="glyphicon glyphicon-user"></span> Présentation</a>
+    </li>
+    <li>
+        <a class="page-scroll" href="#contact"><span class="glyphicon glyphicon-comment"></span> Me contacter</a>
+    </li>
+    <li>
+        <a class="page-scroll" href="#other"><span class="glyphicon glyphicon-globe"></span> Réseaux</a>
+    </li>
+    </li>
+    <li>
+       <a class="page-scroll" href="{{ path('s7t_h_directory_tricklist') }}"><span class="glyphicon glyphicon-globe"></span> Home</a>
+    </li>
+{% endblock %}
+
+{% block header %}
+    <div class="header-content">
+        <div class="header-content-inner">
+            <h3>Modifier le Trick</h3>
+            {{ include('S7tHDirectoryBundle:Tricks:form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

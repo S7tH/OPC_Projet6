@@ -1,3 +1,19 @@
-s7t_h_directory_homepage:
+s7t_h_directory_tricklist:
     path:     /
-    defaults: { _controller: S7tHDirectoryBundle:Trickshome:index }
+    defaults: { _controller: S7tHDirectoryBundle:Tricks:index }
+
+s7t_h_directory_trickadd:
+    path:     /trick-add
+    defaults: { _controller: S7tHDirectoryBundle:Tricks:add }
+
+s7t_h_directory_trickedit:
+    path:     /trick-edit/{id}
+    defaults: { _controller: S7tHDirectoryBundle:Tricks:edit }
+
+s7t_h_directory_trickdelete:
+    path:     /trick-delete/{id}
+    defaults: { _controller: S7tHDirectoryBundle:Tricks:delete }
+
+s7t_h_directory_trickview:
+    path:     /trick-view/{id}
+    defaults: { _controller: S7tHDirectoryBundle:Tricks:view }
