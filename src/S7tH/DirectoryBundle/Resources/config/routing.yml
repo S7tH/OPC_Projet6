@@ -6,6 +6,14 @@ s7t_h_directory_trickadd:
     path:     /trick-add
     defaults: { _controller: S7tHDirectoryBundle:Tricks:add }
 
+s7t_h_directory_trickedit:
+    path:     /trick-edit/{id}
+    defaults: { _controller: S7tHDirectoryBundle:Tricks:edit }
+
+s7t_h_directory_trickdelete:
+    path:     /trick-delete/{id}
+    defaults: { _controller: S7tHDirectoryBundle:Tricks:delete }
+
 s7t_h_directory_trickview:
-    path:     /trick-view
+    path:     /trick-view/{id}
     defaults: { _controller: S7tHDirectoryBundle:Tricks:view }

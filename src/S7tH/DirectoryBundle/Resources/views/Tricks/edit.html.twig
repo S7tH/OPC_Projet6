@@ -19,19 +19,8 @@
 {% block header %}
     <div class="header-content">
         <div class="header-content-inner">
-            <div>
-                {# we display flash message wich name is « notice » #}
-                {% for message in app.session.flashbag.get('notice') %}
-                    <p>Message flash : {{ message }}</p>
-                {% endfor %}
-                 Notre trick
-                {# Displaying of trick #}
-                <ul>
-                        <li>{{ trick.name }}</li>
-                        <li>{{ trick.description }}</li>
-                        <li>{{ trick.date|date("m/d/Y") }}</li>
-                </ul>
-            </div>
+            <h3>Modifier le Trick</h3>
+            {{ include('S7tHDirectoryBundle:Tricks:form.html.twig') }}
         </div>
     </div>
 {% endblock %}
