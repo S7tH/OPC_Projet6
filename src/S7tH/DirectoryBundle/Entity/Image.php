@@ -100,6 +100,11 @@ class Image
         return $this->alt;
     }
 
+    public function getFile()
+    {
+        return $this->file;
+    }
+
     public function setFile(UploaderFile $file = null)
     {
         $this->file = $file;
