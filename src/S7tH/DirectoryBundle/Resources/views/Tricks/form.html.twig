@@ -4,6 +4,7 @@
   {# general errors of the form #}
   {{ form_errors(form) }}
 
+  {{ form_row(form.image) }}
 
   {# manual generation and spread : #}
   <div class="form-group">
@@ -27,6 +28,7 @@
       {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
     </div>
   </div>
+
 
   
   {# we just display the widget for the button #}

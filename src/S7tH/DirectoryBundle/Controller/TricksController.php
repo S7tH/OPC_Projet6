@@ -49,7 +49,9 @@ class TricksController extends Controller
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {
             // Now the variable $tricks contains the form values
-  
+                //we move our image in its folder.
+                $tricks->getImage()->upload();
+
                 //we save our entity in the db
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($tricks);//create the request sql
@@ -70,11 +72,10 @@ class TricksController extends Controller
 
     public function editAction($id, Request $request )
     {
+        //recover entity manager
+        $em = $this->getDoctrine()->getManager();
         //recover the repository
-        $repository = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('S7tHDirectoryBundle:Tricks')
-            ;
+        $repository = $em->getRepository('S7tHDirectoryBundle:Tricks');
         
         //recover the entity with the same id
         //$tricks is a filled object of Tricks entity
@@ -95,7 +96,6 @@ class TricksController extends Controller
             // Now the variable $tricks contains the form values
   
                 //we save our entity in the db
-                $em = $this->getDoctrine()->getManager();
                 $em->persist($tricks);//create the request sql
                 $em->flush();//send the request and save in the db
 

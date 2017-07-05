@@ -24,6 +24,7 @@ class TricksType extends AbstractType
         $builder
             ->add('name', TextType::class)
             ->add('description', TextareaType::class)
+            ->add('image', ImageType::class)
             ->add('save', SubmitType::class, array('label' => 'Enregistrer'));
     }
     
