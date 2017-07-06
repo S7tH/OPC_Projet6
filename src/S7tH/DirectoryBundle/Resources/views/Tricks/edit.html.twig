@@ -24,3 +24,9 @@
         </div>
     </div>
 {% endblock %}
+
+{% block js %}
+  {% javascripts 'bundles/s7thdirectory/js/categories.js'%}
+      <script type="text/javascript" src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+{% endblock %}

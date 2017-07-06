@@ -11,9 +11,6 @@
     <title>{% block title %}SnowTrickmania.com{% endblock %}</title>
 
     
-
-{% block stylesheets %}
-
     <!-- CDN Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
@@ -32,9 +29,11 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-{% endblock %}
+
+{% block stylesheets %}{% endblock %}
 
 </head>
+
 {% block bodyup %}
     <body id="page-top">
 {% endblock %}
@@ -58,7 +57,7 @@
 
      </footer>
 
-{% block js %}
+
     
     <!-- CDN jQuery -->
     <script 
@@ -82,8 +81,7 @@
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 
-    
-{% endblock %}
+{% block js %}{% endblock %}
 
 </body>
 

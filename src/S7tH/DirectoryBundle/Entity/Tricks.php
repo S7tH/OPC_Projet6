@@ -2,6 +2,9 @@
 
 namespace S7tH\DirectoryBundle\Entity;
 
+//use an arraycollection for my categories
+use Doctrine\Common\Collections\ArrayCollection;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -48,12 +51,23 @@ class Tricks
      */
     private $image;
 
+    /**
+     *
+     * @ORM\ManyToMany(targetEntity="S7tH\DirectoryBundle\Entity\Category", cascade={"persist"})
+     * @ORM\JoinTable(name="tricks_category")
+     */
+    private $categories;
+
+
+    /*methods*/
 
     public function __construct()
     {
         $this->date = new \Datetime();
-    }
 
+        //we must defined our arrayCollection in the constructor
+        $this->categories = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -159,5 +173,25 @@ class Tricks
     public function getImage()
     {
         return $this->image;
+    }
+
+    public function addCategory(Category $category)
+    {
+        //we use here the arrayCollection like a table
+        {
+            $this->categories[] = $category;
+        }
+    }
+
+    public function removeCategory(Category $category)
+    {
+        // here we use an ArrayCollection method for delete the targeted category
+        $this->categories->removeElement($category);
+    }
+
+    //recover a list of categories
+    public function getCategories()
+    {
+        return $this->categories;
     }
 }

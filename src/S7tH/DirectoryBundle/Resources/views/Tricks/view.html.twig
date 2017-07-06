@@ -26,7 +26,7 @@
                 {% endfor %}
                  Notre trick
                 {# Displaying of trick #}
-                <img src="{# {{ trick.image.url }} #}{{ asset(trick.image.webPath) }}" alt="{{ trick.image.alt }}"/>
+                <img class="trick-image" src="{# {{ trick.image.url }} #}{{ asset(trick.image.webPath) }}" alt="{{ trick.image.alt }}"/>
                 <ul>
                         <li>{{ trick.name }}</li>
                         <li>{{ trick.description }}</li>

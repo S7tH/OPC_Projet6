@@ -6,6 +6,9 @@
 
   {{ form_row(form.image) }}
 
+  {{ form_row(form.categories) }}
+  <a href="#" id="add_category" class="btn btn-default">Ajouter une catégorie</a>
+
   {# manual generation and spread : #}
   <div class="form-group">
     {# label generating #}
@@ -42,3 +45,4 @@
   {# close the mark <form> of  HTML formulaire #}
   {{ form_end(form) }}
 </div>
+
