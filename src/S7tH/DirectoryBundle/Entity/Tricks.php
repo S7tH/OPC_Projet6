@@ -43,7 +43,7 @@ class Tricks
     private $date;
 
     /**
-     * @ORM\OneToOne(targetEntity="S7tH\DirectoryBundle\Entity\Image", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="S7tH\DirectoryBundle\Entity\Image", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $image;

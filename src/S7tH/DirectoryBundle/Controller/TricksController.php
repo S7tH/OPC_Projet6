@@ -49,8 +49,6 @@ class TricksController extends Controller
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {
             // Now the variable $tricks contains the form values
-                //we move our image in its folder.
-                $tricks->getImage()->upload();
 
                 //we save our entity in the db
                 $em = $this->getDoctrine()->getManager();
