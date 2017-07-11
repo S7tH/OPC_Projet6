@@ -4,10 +4,11 @@
   {# general errors of the form #}
   {{ form_errors(form) }}
 
+
   {{ form_row(form.image) }}
 
+
   {{ form_row(form.categories) }}
-  <a href="#" id="add_category" class="btn btn-default">Ajouter une catégorie</a>
 
   {# manual generation and spread : #}
   <div class="form-group">
@@ -31,8 +32,6 @@
       {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
     </div>
   </div>
-
-
   
   {# we just display the widget for the button #}
   {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}

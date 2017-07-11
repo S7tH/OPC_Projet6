@@ -59,6 +59,7 @@ class Tricks
     private $categories;
 
 
+
     /*methods*/
 
     public function __construct()

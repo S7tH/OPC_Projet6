@@ -58,7 +58,8 @@ class TricksController extends Controller
                 $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistrée.');
 
                 // We are displaying now the trick introduce page thanks a redirection to its route.
-                return $this->redirectToRoute('s7t_h_directory_trickview', array('id' => $tricks->getId()));
+                return $this->redirectToRoute('s7t_h_directory_trickview', array(
+                    'id' => $tricks->getId()));
         }
 
         //if any send, we are displaying the form

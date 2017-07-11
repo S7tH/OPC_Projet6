@@ -1,6 +1,6 @@
 $(document).ready(function() {
     // recover the markup <div> wich contains the attribut « data-prototype ».
-    var $container = $('div#s7th_directorybundle_tricks_categories');
+    var $container = $('div#s7th_directorybundle_tricks_newcategories');
 
     // define an unique counter for each field
     var index = $container.find(':input').length;

@@ -5,12 +5,16 @@ namespace S7tH\DirectoryBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 /*for my form*/
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
+
 /*end form import*/
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -24,14 +28,14 @@ class TricksType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('description', TextareaType::class)
+            ->add('description', CkeditorType::class)
+            ->add('categories', EntityType::class, array(
+                              'class'        => 'S7tHDirectoryBundle:Category',
+                              'choice_label' => 'name',
+                              'multiple'     => true)
+                 )
             ->add('image', ImageType::class)
-            ->add('categories', CollectionType::class, array(
-                  'entry_type'   => CategoryType::class,
-                  'allow_add'    => true,
-                  'allow_delete' => true
-      ))
-            ->add('save', SubmitType::class, array('label' => 'Enregistrer'));
+            ->add('save', SubmitType::class, array('label' => 'Enregistrer'));      
     }
     
     /**
