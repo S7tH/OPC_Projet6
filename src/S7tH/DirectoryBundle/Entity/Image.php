@@ -7,6 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 //call this to Upload files
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
+//use annotation with alias Assert to fixe the valides rules
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Image
  *
@@ -29,6 +32,7 @@ class Image
      * @var string
      *
      * @ORM\Column(name="url", type="string", length=255)
+     * @Assert\Url()
      */
     private $url;
 
@@ -39,9 +43,14 @@ class Image
      */
     private $alt;
 
-    /*any anotation because it isn't this var
+    /*any doctrine anotation because it isn't this var
     who will be persited by doctrine for our file
     We just stock the name of our file temporarily*/
+    /** 
+     * @var UploadedFile
+     *
+     * @Assert\Image(maxSize=1000000, maxWidth=1400, maxHeight= 1400)
+     */
     private $file;
 
     /*attribut for save temporarily the name of file

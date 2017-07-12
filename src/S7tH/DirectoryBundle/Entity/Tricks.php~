@@ -5,7 +5,11 @@ namespace S7tH\DirectoryBundle\Entity;
 //use an arraycollection for my categories
 use Doctrine\Common\Collections\ArrayCollection;
 
+//use doctrine annotation for my db
 use Doctrine\ORM\Mapping as ORM;
+
+//use annotation with alias Assert to fixe the valides rules
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Tricks
@@ -28,6 +32,7 @@ class Tricks
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=40, unique=true)
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -35,6 +40,7 @@ class Tricks
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank()
      */
     private $description;
 
@@ -42,17 +48,18 @@ class Tricks
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetimetz")
+     * @Assert\DateTime()
      */
     private $date;
 
     /**
      * @ORM\OneToOne(targetEntity="S7tH\DirectoryBundle\Entity\Image", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
      */
     private $image;
 
     /**
-     *
      * @ORM\ManyToMany(targetEntity="S7tH\DirectoryBundle\Entity\Category", cascade={"persist"})
      * @ORM\JoinTable(name="tricks_category")
      */
