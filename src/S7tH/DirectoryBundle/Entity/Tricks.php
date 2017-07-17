@@ -2,9 +2,6 @@
 
 namespace S7tH\DirectoryBundle\Entity;
 
-//use an arraycollection for my categories
-use Doctrine\Common\Collections\ArrayCollection;
-
 //use doctrine annotation for my db
 use Doctrine\ORM\Mapping as ORM;
 
@@ -60,11 +57,11 @@ class Tricks
     private $image;
 
     /**
-     * @ORM\ManyToMany(targetEntity="S7tH\DirectoryBundle\Entity\Category", cascade={"persist"})
-     * @ORM\JoinTable(name="tricks_category")
+     * @ORM\ManyToOne(targetEntity="S7tH\DirectoryBundle\Entity\Category", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
      * @Assert\Valid()
      */
-    private $categories;
+    private $category;
 
 
 
@@ -73,9 +70,6 @@ class Tricks
     public function __construct()
     {
         $this->date = new \Datetime();
-
-        //we must defined our arrayCollection in the constructor
-        $this->categories = new ArrayCollection();
     }
 
     /**
@@ -184,23 +178,28 @@ class Tricks
         return $this->image;
     }
 
-    public function addCategory(Category $category)
+
+    /**
+     * Set category
+     *
+     * @param \S7tH\DirectoryBundle\Entity\Category $category
+     *
+     * @return Tricks
+     */
+    public function setCategory(\S7tH\DirectoryBundle\Entity\Category $category)
     {
-        //we use here the arrayCollection like a table
-        {
-            $this->categories[] = $category;
-        }
+        $this->category = $category;
+
+        return $this;
     }
 
-    public function removeCategory(Category $category)
+    /**
+     * Get category
+     *
+     * @return \S7tH\DirectoryBundle\Entity\Category
+     */
+    public function getCategory()
     {
-        // here we use an ArrayCollection method for delete the targeted category
-        $this->categories->removeElement($category);
-    }
-
-    //recover a list of categories
-    public function getCategories()
-    {
-        return $this->categories;
+        return $this->category;
     }
 }

@@ -17,3 +17,4 @@ s7t_h_directory_trickdelete:
 s7t_h_directory_trickview:
     path:     /trick-view/{id}
     defaults: { _controller: S7tHDirectoryBundle:Tricks:view }
+

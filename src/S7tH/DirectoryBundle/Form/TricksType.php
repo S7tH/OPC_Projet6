@@ -30,10 +30,10 @@ class TricksType extends AbstractType
         $builder
             ->add('name', TextType::class)
             ->add('description', CKEditorType::class)
-            ->add('categories', EntityType::class, array(
+            ->add('category', EntityType::class, array(
                               'class'        => 'S7tHDirectoryBundle:Category',
                               'choice_label' => 'name',
-                              'multiple'     => true)
+                              'multiple'     => false)
                  )
             ->add('image', ImageType::class)
             ->add('save', SubmitType::class, array('label' => 'Enregistrer'));      

@@ -128,6 +128,7 @@ class TricksController extends Controller
             throw new NotFoundHttpException("Le trick ayant l'id ".$id." n'existe pas.");
         }
 
+
         return $this->render('S7tHDirectoryBundle:Tricks:view.html.twig', array(
             'trick' => $trick,
         ));

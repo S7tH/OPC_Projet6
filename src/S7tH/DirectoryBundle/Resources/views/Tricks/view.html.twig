@@ -25,14 +25,28 @@
                     <p>Message flash : {{ message }}</p>
                 {% endfor %}
                  Notre trick
+
+                
                 {# Displaying of trick #}
                 <img class="trick-image" src="{# {{ trick.image.url }} #}{{ asset(trick.image.webPath) }}" alt="{{ trick.image.alt }}"/>
                 <ul>
+                        <li>{{ trick.category.name }}</li>
                         <li>{{ trick.name }}</li>
                         <li>{{ trick.description }}</li>
                         <li>{{ trick.date|date("m/d/Y") }}</li>
+
                 </ul>
             </div>
         </div>
     </div>
 {% endblock %}
+
+{% block page %}
+
+    {# add my template commentary form #}
+    {{ render(controller("S7tHDirectoryBundle:Commentaries:add")) }}
+  
+    {{ include('S7tHDirectoryBundle:Commentaries:index.html.twig') }}
+
+{% endblock %}
+
