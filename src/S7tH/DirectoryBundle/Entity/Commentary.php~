@@ -42,15 +42,10 @@ class Commentary
 
     /**
      * @ORM\ManyToOne(targetEntity="S7tH\DirectoryBundle\Entity\Tricks", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
      */
     private $trick;
 
-     public function __construct(\S7tH\DirectoryBundle\Entity\Tricks $trick)
-    {
-        $this->date = new \Datetime();
-        $this->trick = $trick;
-    }
 
     /**
      * Get id
@@ -110,7 +105,20 @@ class Commentary
         return $this->message;
     }
 
-    
+    /**
+     * Set trick
+     *
+     * @param \S7tH\DirectoryBundle\Entity\Tricks $trick
+     *
+     * @return Commentary
+     */
+    public function setTrick(\S7tH\DirectoryBundle\Entity\Tricks $trick = null)
+    {
+        $this->trick = $trick;
+
+        return $this;
+    }
+
     /**
      * Get trick
      *

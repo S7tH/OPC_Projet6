@@ -7,8 +7,15 @@
                     <p class="text-faded">
                     
                         <div>
-                           test des commentaires !!
-                        </div>
+                            Messages des utilisateurs
+
+                            {# Displaying of trick #}
+                            {% for com in commentaries %}
+                                {{ com.message }}
+                                {{ com.date|date("m/d/Y") }}
+                                <br/>
+                            {% endfor %}
+                         </div>
                     
                     </p>
                     <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Get Started!</a>

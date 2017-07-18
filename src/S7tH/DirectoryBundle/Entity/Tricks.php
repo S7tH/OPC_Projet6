@@ -63,7 +63,7 @@ class Tricks
      */
     private $category;
 
-
+    
 
     /*methods*/
 

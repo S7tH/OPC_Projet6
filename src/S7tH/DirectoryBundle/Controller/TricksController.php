@@ -4,10 +4,12 @@ namespace S7tH\DirectoryBundle\Controller;
 
 /*my entities*/
 use S7tH\DirectoryBundle\Entity\Tricks;
+use S7tH\DirectoryBundle\Entity\Commentary;
 /*end entities*/
 
 /*for my form*/
 use S7tH\DirectoryBundle\Form\TricksType;
+use S7tH\DirectoryBundle\Form\CommentaryType;
 /*end form*/
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -110,17 +112,15 @@ class TricksController extends Controller
             ));
     }
 
-    public function viewAction($id)
+    public function viewAction($id, Request $request)
     {
-        //recover the repository
-        $repository = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('S7tHDirectoryBundle:Tricks')
-            ;
+        //recover the entity manager
+        $em = $this->getDoctrine()->getManager();
+
         
-        //recover the entity with the same id
+        //recover the entity with the same id after had recover the repository
         //$tricks is a filled object of Tricks entity
-        $trick = $repository->find($id);
+        $trick = $em->getRepository('S7tHDirectoryBundle:Tricks')->find($id);
         
         // if the id don't exist
         if (null === $trick)
@@ -128,9 +128,39 @@ class TricksController extends Controller
             throw new NotFoundHttpException("Le trick ayant l'id ".$id." n'existe pas.");
         }
 
+        // this part is for the commentaries
+
+        //create my commentary object entity
+        $commentary = new Commentary($trick);
+
+        //create the formBuilder
+        $form = $this->get('form.factory')->create(CommentaryType::class, $commentary);
+
+        //if a commentary form has been send we save the commentary after a check up on it.
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
+        {
+            // Now the variable $tricks contains the form values
+
+                //we save our entity in the db
+                $em->persist($commentary);//create the request sql
+                $em->flush();//send the request and save in the db
+
+                $request->getSession()->getFlashBag()->add('com', 'Votre message a bien été enregistré.');
+
+                // Puis on redirige vers la page de visualisation de cettte annonce
+                return $this->redirectToRoute('s7t_h_directory_trickview', array('id' => $id));
+        }
+
+        //recover the commentaries for display them
+        $commentaries = $em->getRepository('S7tHDirectoryBundle:Commentary')->findBy(array('trick'=> $trick));
+
+
+        //end for the commentaries part
 
         return $this->render('S7tHDirectoryBundle:Tricks:view.html.twig', array(
             'trick' => $trick,
+            'form' => $form->createView(),
+            'commentaries' => $commentaries,
         ));
     }
 

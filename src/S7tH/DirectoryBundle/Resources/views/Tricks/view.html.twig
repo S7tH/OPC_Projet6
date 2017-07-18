@@ -44,7 +44,8 @@
 {% block page %}
 
     {# add my template commentary form #}
-    {{ render(controller("S7tHDirectoryBundle:Commentaries:add")) }}
+
+    {{ include('S7tHDirectoryBundle:Commentaries:add.html.twig') }}
   
     {{ include('S7tHDirectoryBundle:Commentaries:index.html.twig') }}
 

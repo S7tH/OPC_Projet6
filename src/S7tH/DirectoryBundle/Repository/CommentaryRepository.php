@@ -10,4 +10,19 @@ namespace S7tH\DirectoryBundle\Repository;
  */
 class CommentaryRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getApplicationsWithAdvert($limit)
+    {
+        $qb = $this->createQueryBuilder('c');
+        // On fait une jointure avec l'entité Advert avec pour alias « adv »
+        $qb
+          ->innerJoin('c.tricks', 'tks')
+          ->addSelect('tks');
+
+        // Puis on ne retourne que $limit résultats
+        $qb->setMaxResults($limit);
+        // Enfin, on retourne le résultat
+        return $qb
+          ->getQuery()
+          ->getResult();
+    }
 }

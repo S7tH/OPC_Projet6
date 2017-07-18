@@ -20,6 +20,10 @@
     <div class="header-content">
         <div class="header-content-inner">
             <h3>Ajouter un commentaire</h3>
+             {# we display flash message wich name is « com » #}
+                {% for message in app.session.flashbag.get('com') %}
+                    <p>Message flash : {{ message }}</p>
+                {% endfor %}
             {{ include('S7tHDirectoryBundle:Commentaries:form.html.twig') }}
         </div>
     </div>
