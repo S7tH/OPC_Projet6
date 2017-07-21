@@ -48,7 +48,7 @@
                             {% endfor %}
                             <ul>
                                 {# link to the view path of trick #}
-                                <a href="{{ path('s7t_h_directory_trickview', {'id':tricks.id}) }}">
+                                <a href="{{ path('s7t_h_directory_trickview', {'id':tricks.id, 'page': 1}) }}">
                                     <li>{{ tricks.name }}</li>
                                     <li>{{ tricks.description }}</li>
                                     <li>{{ tricks.date|date("m/d/Y") }}</li>

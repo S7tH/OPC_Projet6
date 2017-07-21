@@ -20,6 +20,9 @@ use Symfony\Component\HttpFoundation\Request;
 /*call the no http found exeption*/
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+/*for my autenthification acces control*/
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
 class TricksController extends Controller
 {
     public function indexAction()
@@ -37,7 +40,10 @@ class TricksController extends Controller
             'tricklist' => $tricklist,
         ));
     }
-
+    
+    /**
+     * @Security("has_role('ROLE_USER')")
+     */
     public function addAction(Request $request)
     {
         //create my tricks object entity
@@ -70,7 +76,10 @@ class TricksController extends Controller
                 'form' => $form->createView(),
             ));
     }
-
+    
+    /**
+     * @Security("has_role('ROLE_USER')")
+     */
     public function editAction($id, Request $request )
     {
         //recover entity manager
@@ -112,7 +121,7 @@ class TricksController extends Controller
             ));
     }
 
-    public function viewAction($id, Request $request)
+    public function viewAction($id, $page, Request $request)
     {
         //recover the entity manager
         $em = $this->getDoctrine()->getManager();
@@ -128,7 +137,8 @@ class TricksController extends Controller
             throw new NotFoundHttpException("Le trick ayant l'id ".$id." n'existe pas.");
         }
 
-        // this part is for the commentaries
+
+        //############## !!!! this part is for the commentaries
 
         //create my commentary object entity
         $commentary = new Commentary($trick);
@@ -148,19 +158,42 @@ class TricksController extends Controller
                 $request->getSession()->getFlashBag()->add('com', 'Votre message a bien été enregistré.');
 
                 // Puis on redirige vers la page de visualisation de cettte annonce
-                return $this->redirectToRoute('s7t_h_directory_trickview', array('id' => $id));
+                return $this->redirectToRoute('s7t_h_directory_trickview', array('id' => $id, 'page' => $page));
         }
 
         //recover the commentaries for display them
-        $commentaries = $em->getRepository('S7tHDirectoryBundle:Commentary')->findBy(array('trick'=> $trick));
+        /*$commentaries = $em->getRepository('S7tHDirectoryBundle:Commentary')
+          ->findBy(
+            array('trick'=> $trick), 
+            array('date'=> 'desc'),
+            3,
+            0
+          );*/
 
+        $commentaries = $em->getRepository('S7tHDirectoryBundle:Commentary')
+          ->findByCom(
+            $trick, 
+            $page,
+            3
+          );
 
-        //end for the commentaries part
+        //provisional var
+        $nbcomPerPage = 3; 
+        
+        //paging system
+        $paging = array(
+            'page'=> $page,
+            'nbPages' => ceil(count($commentaries) / $nbcomPerPage)
+        );
+          
+        //##################end for the commentaries part
 
         return $this->render('S7tHDirectoryBundle:Tricks:view.html.twig', array(
             'trick' => $trick,
             'form' => $form->createView(),
             'commentaries' => $commentaries,
+            'paging' => $paging,
+            'id' => $id,
         ));
     }
 

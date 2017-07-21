@@ -2,6 +2,13 @@
 
 namespace S7tH\DirectoryBundle\Repository;
 
+use Doctrine\ORM\EntityRepository;
+
+use Doctrine\ORM\Tools\Pagination\Paginator;
+use InvalidArgumentException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Doctrine\ORM\QueryBuilder;
+
 /**
  * CommentaryRepository
  *
@@ -10,19 +17,56 @@ namespace S7tH\DirectoryBundle\Repository;
  */
 class CommentaryRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getApplicationsWithAdvert($limit)
+  /**
+   * Recover a paged and resorted list of commentaries
+   *
+   * @param int $page
+   * @param int $nbMaxPerPage
+   *
+   * @throws InvalidArgumentException
+   * @throws NotFoundHttpException
+   *
+   * @return Paginator
+   */
+  public function findByCom($trickid ,$page, $nbMaxPerPage)
+  {
+    /*if (!is_numeric($page))
     {
-        $qb = $this->createQueryBuilder('c');
-        // On fait une jointure avec l'entité Advert avec pour alias « adv »
-        $qb
-          ->innerJoin('c.tricks', 'tks')
-          ->addSelect('tks');
+      throw new InvalidArgumentException(
+      'La valeur de l\'argument $page est incorrecte (valeur : ' . $page . ').'
+      );
+    }*/
 
-        // Puis on ne retourne que $limit résultats
-        $qb->setMaxResults($limit);
-        // Enfin, on retourne le résultat
-        return $qb
-          ->getQuery()
-          ->getResult();
+    if ($page < 1)
+    {
+      throw new NotFoundHttpException('La page demandée n\'existe pas');
     }
+
+    /*if (!is_numeric($nbMaxPerPage)) 
+    {
+      throw new InvalidArgumentException(
+      'La valeur de l\'argument $nbMaxParPage est incorrecte (valeur : ' . $nbMaxPerPage . ').'
+      );
+    }*/
+    
+    $qb = $this->createQueryBuilder('c')
+      //we made a juncture with the tricks entity alias trk
+      ->innerJoin('c.trick', 'trk')
+      ->addSelect('trk')
+      ->where('trk = :trickid')
+        ->setParameter('trickid' , $trickid)
+      ->orderBy('c.id', 'DESC');
+        
+    $query = $qb->getQuery();
+   
+    $firstResult = ($page - 1) * $nbMaxPerPage;
+    $query->setFirstResult($firstResult)->setMaxResults($nbMaxPerPage);
+    $paginator = new Paginator($query);
+
+    if ( ($paginator->count() <= $firstResult) && $page != 1)
+    {
+      throw new NotFoundHttpException('La page demandée n\'existe pas.'); // 404 page, exept for the first page
+    }
+        return $paginator;
+  }
 }
