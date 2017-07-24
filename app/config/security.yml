@@ -3,6 +3,7 @@
 security:
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
+        S7tH\UserBundle\Entity\User: plaintext
 
     role_hierarchy:
         ROLE_ADMIN: [ROLE_USER]
@@ -10,10 +11,17 @@ security:
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         # user provider for my firewall
-        in_memory:
-            memory:
-                users:
-                    admin: { password: adminpass, roles: ['ROLE_ADMIN'] }
+        # below a provider memory to declare my users directly on this file 
+        #in_memory:
+            #memory: 
+                #users:
+                    #admin: { password: adminpass, roles: ['ROLE_ADMIN'] }
+        
+        # below the provider to use our users from an entity and a data base
+        main: #name of my provider
+            entity: #my provider type, just below it's my entity user
+                class: S7tH\UserBundle\Entity\User
+                property: username # my entity var which serves of login
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -25,6 +33,7 @@ security:
         main:
             pattern: ^/
             anonymous: true
+            provider: main #we indicate to the firewall that we use this provider
             # activate a form to authenticate
             form_login:
                 login_path: login
