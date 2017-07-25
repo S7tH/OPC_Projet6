@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new S7tH\DirectoryBundle\S7tHDirectoryBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new S7tH\UserBundle\S7tHUserBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

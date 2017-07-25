@@ -21,6 +21,7 @@
     <div class="header-content">
         <div class="header-content-inner">
             <div>
+                    
                     {# we display flash message wich name is « notice » #}
                     {% for message in app.session.flashbag.get('notice') %}
                         <p>Message flash : {{ message }}</p>

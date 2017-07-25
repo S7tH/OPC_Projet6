@@ -61,13 +61,19 @@
                     {% block linkmenu %}{% endblock %}
                     
                     {% block log %}
-                        {% if is_granted('ROLE_USER') %}
+                        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                             <li>
-                                <a class="page-scroll" href="{{ path('logout') }}"><span class="glyphicon glyphicon-globe"></span> Disconnect</a>
+                                <a class="page-scroll" href="{{ path('fos_user_profile_show') }}"><span class="glyphicon glyphicon-globe"></span> Profil de {{ app.user.username }}</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-globe"></span> se déconnecter</a>
                             </li>
                         {% else %}
                             <li>
-                                <a class="page-scroll" href="{{ path('login') }}"><span class="glyphicon glyphicon-globe"></span> Login</a>
+                                <a class="page-scroll" href="{{ path('fos_user_security_login') }}"><span class="glyphicon glyphicon-globe"></span> se connecter</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-globe"></span> s'inscrire</a>
                             </li>
                         {% endif %}
                     {% endblock %}

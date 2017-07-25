@@ -35,7 +35,8 @@
         "leafo/scssphp": "~0.6",
         "patchwork/jsqueeze": "~1.0",
         "twig/twig": "^1.0||^2.0",
-        "egeloen/ckeditor-bundle": "~5.0.3"
+        "egeloen/ckeditor-bundle": "~5.0.3",
+        "friendsofsymfony/user-bundle": "^2.0.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
