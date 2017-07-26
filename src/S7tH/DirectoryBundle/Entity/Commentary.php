@@ -46,10 +46,17 @@ class Commentary
      */
     private $trick;
 
-     public function __construct(\S7tH\DirectoryBundle\Entity\Tricks $trick)
+    /**
+     * @ORM\ManyToOne(targetEntity="S7tH\UserBundle\Entity\User", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+     public function __construct(\S7tH\DirectoryBundle\Entity\Tricks $trick, \S7tH\UserBundle\Entity\User $user)
     {
         $this->date = new \Datetime();
-        $this->trick = $trick;
+        $this->setTrick($trick);
+        $this->setUser($user);
     }
 
     /**
@@ -119,5 +126,43 @@ class Commentary
     public function getTrick()
     {
         return $this->trick;
+    }
+
+    /**
+     * Set trick
+     *
+     * @param \S7tH\DirectoryBundle\Entity\Tricks $trick
+     *
+     * @return Commentary
+     */
+    public function setTrick(\S7tH\DirectoryBundle\Entity\Tricks $trick)
+    {
+        $this->trick = $trick;
+
+        return $this;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \S7tH\UserBundle\Entity\User $user
+     *
+     * @return Commentary
+     */
+    public function setUser(\S7tH\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \S7tH\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

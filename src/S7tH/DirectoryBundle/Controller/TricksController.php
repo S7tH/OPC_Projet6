@@ -137,11 +137,14 @@ class TricksController extends Controller
             throw new NotFoundHttpException("Le trick ayant l'id ".$id." n'existe pas.");
         }
 
+        //we recover the user instance for our commentary
+        $user = $this->getUser();
 
         //############## !!!! this part is for the commentaries
-
         //create my commentary object entity
-        $commentary = new Commentary($trick);
+        $commentary = new Commentary($trick, $user);
+
+        
 
         //create the formBuilder
         $form = $this->get('form.factory')->create(CommentaryType::class, $commentary);
@@ -162,23 +165,15 @@ class TricksController extends Controller
         }
 
         //recover the commentaries for display them
-        /*$commentaries = $em->getRepository('S7tHDirectoryBundle:Commentary')
-          ->findBy(
-            array('trick'=> $trick), 
-            array('date'=> 'desc'),
-            3,
-            0
-          );*/
-
         $commentaries = $em->getRepository('S7tHDirectoryBundle:Commentary')
           ->findByCom(
             $trick, 
             $page,
-            3
+            10
           );
 
         //provisional var
-        $nbcomPerPage = 3; 
+        $nbcomPerPage = 10; 
         
         //paging system
         $paging = array(

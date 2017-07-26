@@ -12,6 +12,8 @@
                             {# Displaying of commentaries if there are of them #}
                         {% if commentaries is not empty %}
                             {% for com in commentaries %}
+                                <img src="{{ gravatar(com.user.gravatar) }}">
+                                {{ com.user.username }}
                                 {{ com.message }}
                                 {{ com.date|date("m/d/Y") }}
                                 <br/>
