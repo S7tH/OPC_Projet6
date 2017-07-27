@@ -9,6 +9,7 @@ use S7tH\DirectoryBundle\Entity\Commentary;
 
 /*for my form*/
 use S7tH\DirectoryBundle\Form\TricksType;
+use S7tH\DirectoryBundle\Form\TricksEditType;
 use S7tH\DirectoryBundle\Form\CommentaryType;
 /*end form*/
 
@@ -98,7 +99,7 @@ class TricksController extends Controller
         }
 
         //create the form
-        $form = $this->get('form.factory')->create(TricksType::class, $tricks);
+        $form = $this->get('form.factory')->create(TricksEditType::class, $tricks);
         
         //if a form has been send so we are not displaying the form but send the form and if the values are ok
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())

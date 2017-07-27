@@ -50,7 +50,7 @@
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Start Bootstrap</a>
+                <a class="navbar-brand page-scroll" href="#page-top">SnoWTrickMania.com</a>
             </div>
             {% endblock %}
 
@@ -63,17 +63,17 @@
                     {% block log %}
                         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                             <li>
-                                <a class="page-scroll" href="{{ path('fos_user_profile_show') }}"><span class="glyphicon glyphicon-globe"></span> Profil de {{ app.user.username }}</a>
+                                <a class="page-scroll" href="{{ path('fos_user_profile_show') }}"><span class="glyphicon glyphicon-user"></span> Profil de {{ app.user.username }}</a>
                             </li>
                             <li>
-                                <a class="page-scroll" href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-globe"></span> se déconnecter</a>
+                                <a class="page-scroll" href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-off"></span> se déconnecter</a>
                             </li>
                         {% else %}
                             <li>
                                 <a class="page-scroll" href="{{ path('fos_user_security_login') }}"><span class="glyphicon glyphicon-globe"></span> se connecter</a>
                             </li>
                             <li>
-                                <a class="page-scroll" href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-globe"></span> s'inscrire</a>
+                                <a class="page-scroll" href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user"></span> s'inscrire</a>
                             </li>
                         {% endif %}
                     {% endblock %}

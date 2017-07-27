@@ -4,8 +4,9 @@
   {# general errors of the form #}
   {{ form_errors(form) }}
 
-
-  {{ form_row(form.image) }}
+  {% if form.image is defined %}
+    {{ form_row(form.image) }}
+  {% endif %}
 
 
   {{ form_row(form.category) }}

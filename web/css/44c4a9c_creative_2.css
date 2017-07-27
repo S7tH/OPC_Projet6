@@ -43,7 +43,7 @@ p {
   margin-bottom: 20px;
 }
 .bg-primary {
-  background-color: #F05F40;
+    background-image: repeating-linear-gradient(#333953 10%, #33355b 90%);
 }
 .bg-dark {
   background-color: #222222;
@@ -414,3 +414,4 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: #222222;
 }
+

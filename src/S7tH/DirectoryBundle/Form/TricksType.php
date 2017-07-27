@@ -12,7 +12,6 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
@@ -29,7 +28,7 @@ class TricksType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('description', CKEditorType::class)
+            ->add('description', TextareaType::class)
             ->add('category', EntityType::class, array(
                               'class'        => 'S7tHDirectoryBundle:Category',
                               'choice_label' => 'name',
