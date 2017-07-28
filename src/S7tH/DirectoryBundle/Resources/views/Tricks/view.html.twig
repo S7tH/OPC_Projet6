@@ -22,15 +22,11 @@
         <div class="header-content-inner">
             <div>
                     
-                    {# we display flash message wich name is « notice » #}
-                    {% for message in app.session.flashbag.get('notice') %}
-                        <p>Message flash : {{ message }}</p>
-                    {% endfor %}
                     Notre trick
 
                 
                     {# Displaying of trick #}
-                    <img class="trick-image" src="{# {{ trick.image.url }} #}{{ asset(trick.image.webPath) }}" alt="{{ trick.image.alt }}"/>
+                    <img class="trick-image" src="{{ asset(trick.image.webPath) }}" alt="{{ trick.image.alt }}"/>
                     <ul>
                         <li>{{ trick.category.name }}</li>
                         <li>{{ trick.name }}</li>

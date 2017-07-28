@@ -35,7 +35,9 @@ class TricksController extends Controller
             ;
         
         //recover all the entities
-        $tricklist = $repository->findAll();
+        //$tricklist = $repository->findAll();
+        $tricklist = $repository->tricklist();
+       
         
         return $this->render('S7tHDirectoryBundle:Tricks:index.html.twig', array(
             'tricklist' => $tricklist,
@@ -67,8 +69,7 @@ class TricksController extends Controller
                 $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistrée.');
 
                 // We are displaying now the trick introduce page thanks a redirection to its route.
-                return $this->redirectToRoute('s7t_h_directory_trickview', array(
-                    'id' => $tricks->getId()));
+                return $this->redirectToRoute('s7t_h_directory_tricklist');
         }
 
         //if any send, we are displaying the form
@@ -138,18 +139,27 @@ class TricksController extends Controller
             throw new NotFoundHttpException("Le trick ayant l'id ".$id." n'existe pas.");
         }
 
-        //we recover the user instance for our commentary
-        $user = $this->getUser();
-
-        //############## !!!! this part is for the commentaries
-        //create my commentary object entity
-        $commentary = new Commentary($trick, $user);
+       
+        
 
         
 
+        //we recover the user instance for our commentary
+        $user = $this->getUser();
+        $commentary = null;
+
+        //if any user is connected user is null and we don't build a form and don't display it in twig view
+        if ($user !== null)
+        {
+            //############## !!!! this part is for the commentaries
+            //create my commentary object entity
+            $commentary = new Commentary($trick);  
+            $commentary->setUser($user);
+        }
+        
         //create the formBuilder
         $form = $this->get('form.factory')->create(CommentaryType::class, $commentary);
-
+        
         //if a commentary form has been send we save the commentary after a check up on it.
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {
@@ -164,7 +174,8 @@ class TricksController extends Controller
                 // Puis on redirige vers la page de visualisation de cettte annonce
                 return $this->redirectToRoute('s7t_h_directory_trickview', array('id' => $id, 'page' => $page));
         }
-
+        
+        
         //recover the commentaries for display them
         $commentaries = $em->getRepository('S7tHDirectoryBundle:Commentary')
           ->findByCom(

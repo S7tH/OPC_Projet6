@@ -52,11 +52,10 @@ class Commentary
      */
     private $user;
 
-     public function __construct(\S7tH\DirectoryBundle\Entity\Tricks $trick, \S7tH\UserBundle\Entity\User $user)
+     public function __construct(\S7tH\DirectoryBundle\Entity\Tricks $trick)
     {
         $this->date = new \Datetime();
         $this->setTrick($trick);
-        $this->setUser($user);
     }
 
     /**

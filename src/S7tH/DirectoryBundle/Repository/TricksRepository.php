@@ -10,4 +10,14 @@ namespace S7tH\DirectoryBundle\Repository;
  */
 class TricksRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function tricklist()
+    {
+        $queryBuilder = $this->createQueryBuilder('t');
+
+        $queryBuilder->orderBy('t.category', 'ASC');
+     
+        return $queryBuilder
+            ->getQuery()
+            ->getResult();
+    }
 }

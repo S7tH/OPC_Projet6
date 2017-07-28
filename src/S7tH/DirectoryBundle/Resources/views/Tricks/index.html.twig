@@ -8,7 +8,7 @@
         <a class="page-scroll" href="#tricks"><span class="glyphicon glyphicon-sunglasses"></span> Les Tricks</a>
     </li>
     <li>
-       <a class="page-scroll" href="#newtrick"><span class="glyphicon glyphicon-edit"></span> Créer une Trick</a>
+       <a class="page-scroll" href="#newtrick"><span class="glyphicon glyphicon-edit"></span> Créer un Trick</a>
     </li>
 {% endblock %}
 
@@ -16,6 +16,10 @@
 
     <div class="header-content">
         <div class="header-content-inner">
+            {# we display flash message wich name is « notice » #}
+                    {% for message in app.session.flashbag.get('notice') %}
+                        <p>Message flash : {{ message }}</p>
+                    {% endfor %}
             <h1 id="homeHeading">Bienvenue sur SnowTrickMania.com</h1>
                 <hr>
                 <p>SnowTrickMania est consacré à l'art du Snowboard et ses Tricks aussi bien pour les passionnés que les néophytes dans le domaine.</p>
@@ -36,13 +40,18 @@
                     <p class="text-faded">
                     
                     {# Displaying the tricks list#}
+                    {% set cat = null %}
                     {% for tricks in tricklist %} 
+
                         <div>
                             {# we display flash message wich name is « notice » #}
                             {% for message in app.session.flashbag.get('notice') %}
                                  <p>Message flash : {{ message }}</p>
                             {% endfor %}
                             <ul>
+                            {% if cat == null or cat != tricks.category.name %}
+                                <li>{{ tricks.category.name }}</li>
+                                <hr>
                                 {# link to the view path of trick #}
                                 <a href="{{ path('s7t_h_directory_trickview', {'id':tricks.id, 'page': 1}) }}">
                                     <li>{{ tricks.name }}</li>
@@ -57,8 +66,29 @@
                                 <a href="{{ path('s7t_h_directory_trickdelete', {'id':tricks.id}) }}">
                                     <li>Supprimer</li>
                                 </a>
+                            {% else %}
+
+                            {# link to the view path of trick #}
+                                <a href="{{ path('s7t_h_directory_trickview', {'id':tricks.id, 'page': 1}) }}">
+                                    
+                                    <li>{{ tricks.name }}</li>
+                                    <li>{{ tricks.description }}</li>
+                                    <li>{{ tricks.date|date("m/d/Y") }}</li>
+                                </a>
+                                {# button edit #}
+                                <a href="{{ path('s7t_h_directory_trickedit', {'id':tricks.id}) }}">
+                                    <li>Editer</li>
+                                </a>
+                                {# button delete #}
+                                <a href="{{ path('s7t_h_directory_trickdelete', {'id':tricks.id}) }}">
+                                    <li>Supprimer</li>
+                                </a>
+                            {% endif %}
                             </ul>
+
                         </div>
+
+                        {% set cat = tricks.category.name %}
                     {% endfor %}
                     </p>
                 </div>
@@ -70,8 +100,8 @@
     <aside class="bg-dark"  id="newtrick">
         <div class="container text-center">
             <div class="call-to-action">
-                <h2>Vous désirez ajouter une nouvelle Trick ?</h2>
-                <a href="{{ path('s7t_h_directory_trickadd') }}" class="btn btn-default btn-xl sr-button">Créer une Trick !</a>
+                <h2>Vous désirez ajouter un nouveau Trick ?</h2>
+                <a href="{{ path('s7t_h_directory_trickadd') }}" class="btn btn-default btn-xl sr-button">Créer un Trick !</a>
             </div>
         </div>
     </aside>
