@@ -1,0 +1,13 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+Tous les champs sont obligatoires !
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+    </div>
+{{ form_end(form) }}
+    <hr>
+    *Si vous n'avez pas encore de compte Gravatar, créez en un 
+    <a href="https://signup.wordpress.com/signup/?ref=oauth2&oauth2_redirect=d62ff64ae1ff0edfc25686d33344e5d7%40https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fclient_id%3D1854%26response_type%3Dcode%26blog_id%3D0%26state%3D618fcb277bbbfd2c2e703c0dc0d3030dcc21ecfd6de28fddf7c9c5aafce2aa2a%26redirect_uri%3Dhttps%253A%252F%252Fen.gravatar.com%252Fconnect%252F%253Faction%253Drequest_access_token%26jetpack-code%26jetpack-user-id%3D0%26action%3Doauth2-login&wpcom_connect=1" target="no_blank"/>ici</a>
+

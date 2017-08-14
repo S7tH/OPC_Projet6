@@ -1,0 +1,44 @@
+{% extends "::layout.html.twig" %}
+
+
+{% block navside %}
+   
+    {{ parent() }}
+
+    {% block brand %}
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">Start Bootstrap</a>
+        </div>
+    {% endblock %}
+
+{% endblock %}
+
+{% block header %}
+    <div class="header-content">
+        <div class="header-content-inner">
+            <div> 
+                {# display the flash  messages that define the bundle controllers #}
+                {% for key, messages in app.session.flashbag.all() %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ key }}">
+                            {{ message|trans({}, 'FOSUserBundle') }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+                {# define this block wich will get to insert the bundle other views #}
+                {% block fos_user_content %}
+
+                    {% block fos_user_security_logout %}
+                    {% endblock %}
+                    
+                {% endblock fos_user_content %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

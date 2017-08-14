@@ -1,0 +1,4 @@
+services:
+#    s7t_h_user.example:
+#        class: S7tH\UserBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

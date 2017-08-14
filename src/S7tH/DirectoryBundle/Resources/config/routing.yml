@@ -15,5 +15,8 @@ s7t_h_directory_trickdelete:
     defaults: { _controller: S7tHDirectoryBundle:Tricks:delete }
 
 s7t_h_directory_trickview:
-    path:     /trick-view/{id}
+    path:     /trick-view/number-{id}/page-{page}
     defaults: { _controller: S7tHDirectoryBundle:Tricks:view }
+    requirements:
+      page: \d+
+      

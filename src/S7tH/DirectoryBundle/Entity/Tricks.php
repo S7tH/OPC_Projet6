@@ -2,7 +2,11 @@
 
 namespace S7tH\DirectoryBundle\Entity;
 
+//use doctrine annotation for my db
 use Doctrine\ORM\Mapping as ORM;
+
+//use annotation with alias Assert to fixe the valides rules
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Tricks
@@ -25,6 +29,7 @@ class Tricks
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=40, unique=true)
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -32,6 +37,7 @@ class Tricks
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank()
      */
     private $description;
 
@@ -39,8 +45,27 @@ class Tricks
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetimetz")
+     * @Assert\DateTime()
      */
     private $date;
+
+    /**
+     * @ORM\OneToOne(targetEntity="S7tH\DirectoryBundle\Entity\Image", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
+     */
+    private $image;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="S7tH\DirectoryBundle\Entity\Category", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
+     */
+    private $category;
+
+    
+
+    /*methods*/
 
     public function __construct()
     {
@@ -128,5 +153,53 @@ class Tricks
     {
         return $this->date;
     }
-}
 
+    /**
+     * Set image
+     *
+     * @param \S7tH\DirectoryBundle\Entity\Image $image
+     *
+     * @return Tricks
+     */
+    public function setImage(\S7tH\DirectoryBundle\Entity\Image $image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \S7tH\DirectoryBundle\Entity\Image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+
+    /**
+     * Set category
+     *
+     * @param \S7tH\DirectoryBundle\Entity\Category $category
+     *
+     * @return Tricks
+     */
+    public function setCategory(\S7tH\DirectoryBundle\Entity\Category $category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \S7tH\DirectoryBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+}

@@ -16,22 +16,40 @@
     </li>
 {% endblock %}
 
+
 {% block header %}
     <div class="header-content">
         <div class="header-content-inner">
             <div>
-                {# we display flash message wich name is « notice » #}
-                {% for message in app.session.flashbag.get('notice') %}
-                    <p>Message flash : {{ message }}</p>
-                {% endfor %}
-                 Notre trick
-                {# Displaying of trick #}
-                <ul>
+                    
+                    Notre trick
+
+                
+                    {# Displaying of trick #}
+                    <img class="trick-image" src="{{ asset(trick.image.webPath) }}" alt="{{ trick.image.alt }}"/>
+                    <ul>
+                        <li>{{ trick.category.name }}</li>
                         <li>{{ trick.name }}</li>
                         <li>{{ trick.description }}</li>
                         <li>{{ trick.date|date("m/d/Y") }}</li>
-                </ul>
+                    </ul>
             </div>
         </div>
     </div>
 {% endblock %}
+
+
+{% block page %}
+        {# add my template commentary form #}
+        {# if user is authentified #}
+        {% if is_granted('ROLE_USER') %}
+        {{ include('S7tHDirectoryBundle:Commentaries:add.html.twig') }}
+        {% else %}
+        <p>Veuillez vous authentifier pour laisser un commentaire. 
+        {% endif %}
+
+
+        {{ include('S7tHDirectoryBundle:Commentaries:index.html.twig') }}
+
+{% endblock %}
+

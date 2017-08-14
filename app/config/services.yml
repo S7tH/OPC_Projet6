@@ -18,3 +18,7 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+    s7th.form.registration:
+        class: S7tH\UserBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: gravaform}

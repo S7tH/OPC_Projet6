@@ -4,6 +4,12 @@
   {# general errors of the form #}
   {{ form_errors(form) }}
 
+  {% if form.image is defined %}
+    {{ form_row(form.image) }}
+  {% endif %}
+
+
+  {{ form_row(form.category) }}
 
   {# manual generation and spread : #}
   <div class="form-group">
@@ -27,7 +33,6 @@
       {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
     </div>
   </div>
-
   
   {# we just display the widget for the button #}
   {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
@@ -40,3 +45,4 @@
   {# close the mark <form> of  HTML formulaire #}
   {{ form_end(form) }}
 </div>
+
