@@ -1,5 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+
 Tous les champs sont obligatoires !
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
     {{ form_widget(form) }}

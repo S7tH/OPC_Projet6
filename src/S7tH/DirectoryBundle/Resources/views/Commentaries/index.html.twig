@@ -1,62 +1,77 @@
-    <section class="bg-primary" id="about">
+    <section class="bg-primary" id="coms">
         <div class="container">
             <div class="row">
+                
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">test des commentaires !!</h2>
+                    <h2 class="section-heading">Commentaires communautaire sur le trick</h2>
+                    {% if paging.page > 1 %}
+                        <h4> {{ paging.page }}me page</h4>
+                    {% endif %}
+                    <a href="#com" class="btn btn-primary btn-xl page-scroll trick-button"><span class="glyphicon glyphicon-triangle-top"></span> Ecrire un commentaire <span class="glyphicon glyphicon-triangle-top"></span></a>
+                    <a href="#page-bottom" class="btn btn-primary btn-xl page-scroll"><span class="glyphicon glyphicon-triangle-bottom"></span> Changer de page / Bas de page<span class="glyphicon glyphicon-triangle-bottom"></span></a>
                     <hr class="light">
                     <p class="text-faded">
                     
-                        <div>
-                            Messages des utilisateurs
-
-                            {# Displaying of commentaries if there are of them #}
+                    <div class="com-frame col-xs-12">
+                        {# Displaying of commentaries if there are of them #}
                         {% if commentaries is not empty %}
                             {% for com in commentaries %}
-                                <img src="{{ gravatar(com.user.gravatar) }}">
-                                {{ com.user.username }}
-                                {{ com.message }}
-                                {{ com.date|date("m/d/Y") }}
-                                <br/>
+                                <div class="com-one row">
+                                    <div class="col-xs-12 col-sm-4">
+                                        <img class="com-img" src="{{ gravatar(com.user.gravatar) }}">
+                                        <br/>
+                                        {{ com.user.username }}
+                                    </div>
+                                    
+                                     <div class="col-xs-12 col-sm-8 com-txt">
+                                        {{ com.message }}
+                                    </div>
+                                    <div class="col-xs-12 com-date">
+                                        écrit le {{ com.date|date("d/m/Y à H:i.s", "Europe/Paris") }}
+                                    </div>
+                                </div>
                                 <hr class="article-separation"/>
                             {% endfor %}
+                         
+                                 
 
-                            {% if paging.nbPages > 0 %}
-                                <ul class="pagination pagination-sm">
-                                {% if paging.page > 1 %}
-                                    <li>
-                                         <a href="{{ path('s7t_h_directory_trickview', {'id':id, 'page': 1}) }}"></a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ path('s7t_h_directory_trickview', {'id':id, 'page': paging.page -1}) }}"></a>
-                                    </li>
-                                {% endif %}
-
-                                {# Displaying of all pages between p-4 & p+4 exept if < 1 or > nbPages #}
-                                {% for p in range(max(paging.page - 4, 1), min(paging.page + 4, paging.nbPages)) %}
-                                    <li {% if p == paging.page %}class="active"{% endif %}>
-                                        <a href="{{ path('s7t_h_directory_trickview', {'id':id, 'page': p}) }}">
-                                        {{ p }}
-                                        </a>
-                                    </li>
-                                {% endfor %}
-
-                                {% if paging.page < paging.nbPages %}
-                                    <li>
-                                        <a href="{{ path('s7t_h_directory_trickview', {'id':id, 'page': paging.page + 1}) }}"></a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ path('s7t_h_directory_trickview', {'id':id, 'page': paging.nbPages}) }}"></a>
-                                    </li>
-                                {% endif %}
-                                </ul>
-                            {% endif %}
-                        {% else %}
-                            <p>Il n'y a aucun commentaire actuellement, soyez le premier.</p>
+                    {% if paging.nbPages > 0 %}
+                        <ul class="pagination pagination-sm" id="page-bottom">
+                        {% if paging.page > 1 %}
+                            <li>
+                                <a href="{{ path('s7t_h_directory_trickview', {'id':id, 'page': 1}) }}"></a>
+                            </li>
+                            <li>
+                                <a href="{{ path('s7t_h_directory_trickview', {'id':id, 'page': paging.page -1}) }}"></a>
+                            </li>
                         {% endif %}
-                        </div>
-                    
+
+                        {# Displaying of all pages between p-4 & p+4 exept if < 1 or > nbPages #}
+                        {% for p in range(max(paging.page - 4, 1), min(paging.page + 4, paging.nbPages)) %}
+                            <li {% if p == paging.page %}class="active"{% endif %}>
+                                <a href="{{ path('s7t_h_directory_trickview', {'id':id, 'page': p}) }}#coms">
+                                    {{ p }}
+                                </a>
+                            </li>
+                        {% endfor %}
+
+                        {% if paging.page < paging.nbPages %}
+                            <li>
+                                <a href="{{ path('s7t_h_directory_trickview', {'id':id, 'page': paging.page + 1}) }}"></a>
+                            </li>
+                            <li>
+                                <a href="{{ path('s7t_h_directory_trickview', {'id':id, 'page': paging.nbPages}) }}"></a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+
+                    {% else %}
+                        <p>Il n'y a aucun commentaire actuellement, soyez le premier.</p>
+                    {% endif %}
                     </p>
-                    <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Get Started!</a>
+                    </div> 
+                        <a href="#com" class="btn btn-primary btn-xl page-scroll trick-button"><span class="glyphicon glyphicon-triangle-top"></span> Ecrire un commentaire <span class="glyphicon glyphicon-triangle-top"></span></a>   
+                        <a href="#page-top" class="btn btn-primary btn-xl page-scroll"><span class="glyphicon glyphicon-triangle-top"></span> <span class="glyphicon glyphicon-triangle-top"></span> Voir le trick / Haut de page <span class="glyphicon glyphicon-triangle-top"></span> <span class="glyphicon glyphicon-triangle-top"></span></a>
                 </div>
             </div>
         </div>

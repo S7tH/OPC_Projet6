@@ -32,7 +32,6 @@ class Image
      * @var string
      *
      * @ORM\Column(name="url", type="string", length=255)
-     * @Assert\Url()
      */
     private $url;
 
@@ -56,8 +55,7 @@ class Image
     /*attribut for save temporarily the name of file
     before deleting of trick with this file.*/
     private $tempFilename;
-
-
+  
     /**
      * Get id
      *

@@ -2,16 +2,6 @@
 
 {% block linkmenu %}
     <li>
-        <a class="page-scroll" href="#page-top"><span class="glyphicon glyphicon-user"></span> Présentation</a>
-    </li>
-    <li>
-        <a class="page-scroll" href="#contact"><span class="glyphicon glyphicon-comment"></span> Me contacter</a>
-    </li>
-    <li>
-        <a class="page-scroll" href="#other"><span class="glyphicon glyphicon-globe"></span> Réseaux</a>
-    </li>
-    </li>
-    <li>
        <a class="page-scroll" href="{{ path('s7t_h_directory_tricklist') }}"><span class="glyphicon glyphicon-globe"></span> Home</a>
     </li>
 {% endblock %}
@@ -26,6 +16,10 @@
 {% endblock %}
 
 {% block js %}
-    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-    <script>tinymce.init({ selector:'textarea' });</script>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apikey=68jx62mqa8lxxguxg7p7nu12xooh2f14dn40eumnjy1ft8er"></script>
+    <script>
+        tinymce.init({ selector:'textarea', auto_focus: 's7th_directorybundle_tricks_description',
+        plugins: "image, media",
+        media_live_embeds: true});
+    </script>
 {% endblock %}

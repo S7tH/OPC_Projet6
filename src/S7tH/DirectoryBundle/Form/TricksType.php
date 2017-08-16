@@ -28,7 +28,9 @@ class TricksType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('description', TextareaType::class)
+            ->add('description', TextareaType::class, array(
+                   'required' => false
+                    ))
             ->add('category', EntityType::class, array(
                               'class'        => 'S7tHDirectoryBundle:Category',
                               'choice_label' => 'name',

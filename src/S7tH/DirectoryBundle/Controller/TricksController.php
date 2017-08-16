@@ -64,6 +64,7 @@ class TricksController extends Controller
                 //we save our entity in the db
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($tricks);//create the request sql
+
                 $em->flush();//send the request and save in the db
 
                 $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistrée.');
@@ -114,7 +115,7 @@ class TricksController extends Controller
                 $request->getSession()->getFlashBag()->add('notice', 'Trick bien modifié et enregistrée.');
 
                 // We are displaying now the trick introduce page thanks a redirection to its route.
-                return $this->redirectToRoute('s7t_h_directory_trickview', array('id' => $tricks->getId()));
+                return $this->redirectToRoute('s7t_h_directory_tricklist');
         }
 
         return $this->render('S7tHDirectoryBundle:Tricks:edit.html.twig',
@@ -171,8 +172,8 @@ class TricksController extends Controller
 
                 $request->getSession()->getFlashBag()->add('com', 'Votre message a bien été enregistré.');
 
-                // Puis on redirige vers la page de visualisation de cettte annonce
-                return $this->redirectToRoute('s7t_h_directory_trickview', array('id' => $id, 'page' => $page));
+                // we redirect the route with an ancre to see directly our last readed comment with " $this->redirect($this->generateUrl"
+                return $this->redirect($this->generateUrl('s7t_h_directory_trickview', array('id' => $id, 'page' => 1)) .'#coms');
         }
         
         

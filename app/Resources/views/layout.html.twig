@@ -16,7 +16,6 @@
 
     
     {% stylesheets filter='cssrewrite, ?scssphp, ?jsqueeze'
-        'bundles/s7thdirectory/magnific-popup/magnific-popup.css'
         'bundles/s7thdirectory/css/creative.css'
     %}
         <!-- Theme CSS -->
@@ -76,7 +75,7 @@
                                 <a class="page-scroll" href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user"></span> s'inscrire</a>
                             </li>
                         {% endif %}
-                    {% endblock %}
+                    {% endblock %} 
                 </ul>
             </div>
     <!-- /.navbar-collapse -->
@@ -92,8 +91,9 @@
 {% block header %}{% endblock %}
     </header>
 
-
+    
 {% block page %}{% endblock %}
+    
 
     <footer>
 
@@ -119,7 +119,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     
     {% javascripts 
-        'bundles/s7thdirectory/magnific-popup/jquery.magnific-popup.js'
         'bundles/s7thdirectory/scrollreveal/scrollreveal.js'
         'bundles/s7thdirectory/js/creative.js'
     %}

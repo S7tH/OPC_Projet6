@@ -13,7 +13,10 @@ class TricksEditType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->remove('image'); 
+        $builder->remove('image')
+                ->add('image', ImageType::class, array(
+                            'required' => false
+                    ));
     }
 
     public function getParent()

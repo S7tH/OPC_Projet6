@@ -19,4 +19,5 @@ s7t_h_directory_trickview:
     defaults: { _controller: S7tHDirectoryBundle:Tricks:view }
     requirements:
       page: \d+
+
       

@@ -63,7 +63,7 @@ class Tricks
      */
     private $category;
 
-
+    
 
     /*methods*/
 
@@ -163,6 +163,14 @@ class Tricks
      */
     public function setImage(\S7tH\DirectoryBundle\Entity\Image $image)
     {
+        if($image == null)
+        {
+            $image = new Image();
+            $image
+            ->setAlt("5e3REAc.jpg")
+            ->setUrl("jpeg");
+            $this->image = $image;
+        }
         $this->image = $image;
 
         return $this;
@@ -178,4 +186,28 @@ class Tricks
         return $this->image;
     }
 
+
+    /**
+     * Set category
+     *
+     * @param \S7tH\DirectoryBundle\Entity\Category $category
+     *
+     * @return Tricks
+     */
+    public function setCategory(\S7tH\DirectoryBundle\Entity\Category $category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \S7tH\DirectoryBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
 }

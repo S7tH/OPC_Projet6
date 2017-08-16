@@ -40,56 +40,70 @@
                     <p class="text-faded">
                     
                     {# Displaying the tricks list#}
+                    {# to begin var cat = null #}
                     {% set cat = null %}
-                    {% for tricks in tricklist %} 
 
-                        <div>
+                        {% for tricks in tricklist %} 
+
                             {# we display flash message wich name is « notice » #}
                             {% for message in app.session.flashbag.get('notice') %}
                                  <p>Message flash : {{ message }}</p>
                             {% endfor %}
-                            <ul>
+                            
+                            
                             {% if cat == null or cat != tricks.category.name %}
-                                <li>{{ tricks.category.name }}</li>
-                                <hr>
-                                {# link to the view path of trick #}
-                                <a href="{{ path('s7t_h_directory_trickview', {'id':tricks.id, 'page': 1}) }}">
-                                    <li>{{ tricks.name }}</li>
-                                    <li>{{ tricks.description }}</li>
-                                    <li>{{ tricks.date|date("m/d/Y") }}</li>
-                                </a>
-                                {# button edit #}
-                                <a href="{{ path('s7t_h_directory_trickedit', {'id':tricks.id}) }}">
-                                    <li>Editer</li>
-                                </a>
-                                {# button delete #}
-                                <a href="{{ path('s7t_h_directory_trickdelete', {'id':tricks.id}) }}">
-                                    <li>Supprimer</li>
-                                </a>
-                            {% else %}
 
-                            {# link to the view path of trick #}
-                                <a href="{{ path('s7t_h_directory_trickview', {'id':tricks.id, 'page': 1}) }}">
-                                    
-                                    <li>{{ tricks.name }}</li>
-                                    <li>{{ tricks.description }}</li>
-                                    <li>{{ tricks.date|date("m/d/Y") }}</li>
-                                </a>
-                                {# button edit #}
-                                <a href="{{ path('s7t_h_directory_trickedit', {'id':tricks.id}) }}">
-                                    <li>Editer</li>
-                                </a>
-                                {# button delete #}
-                                <a href="{{ path('s7t_h_directory_trickdelete', {'id':tricks.id}) }}">
-                                    <li>Supprimer</li>
-                                </a>
+                                {% if cat != null and cat != tricks.category.name %}
+                                    </div>
+                                    <div class="col-xs-12 trickemptyend"></div>
+                                {% endif %}
+
+                                
+                                <div class="col-xs-12 trickframe">
+                                    <a>
+                                        <span class="glyphicon glyphicon-chevron-down"></span>
+                                            {{ tricks.category.name|upper }}
+                                        <span class="glyphicon glyphicon-chevron-down"></span>
+                                    </a>
+                                    <div class="col-xs-12 trickemptystart"></div>
+                                
+
                             {% endif %}
-                            </ul>
+                                
+                                <a href="{{ path('s7t_h_directory_trickview', {'id':tricks.id, 'page': 1}) }}">
+                                              
+                                <div class="row col-xs-10 col-sm-5 trickelmt">
+                                    
+                                        <img class="clearfix hidden-xs col-sm-6 table-condensed img-rules" src="{{ asset(tricks.image.webPath) }}" alt="{{ tricks.image.alt }}">
+                                        
 
+                                        {# link to the view path of trick #}
+                                        <span class="col-xs-offset-1"></span>{{ tricks.name }}
+                                            
+                                            
+                                    {# if user is authentified #}
+                                    {% if is_granted('ROLE_USER') %}
+                                        <br/>
+                                        <br/>
+                                        {# button edit #}
+                                        <a href="{{ path('s7t_h_directory_trickedit', {'id':tricks.id}) }}">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </a>
+                                       
+                                       
+                                        {# button delete #}
+                                        <a href="{{ path('s7t_h_directory_trickdelete', {'id':tricks.id}) }}">
+                                            <span class="glyphicon glyphicon-trash">
+                                        </a>
+                                        
+                                    {% endif %}
+                                    
+                                </div>
+                                </a>
+                            {% set cat = tricks.category.name %}
+                        {% endfor %}
                         </div>
-
-                        {% set cat = tricks.category.name %}
-                    {% endfor %}
+                        </div>
                     </p>
                 </div>
             </div>
@@ -97,11 +111,11 @@
     </section>
 
     
-    <aside class="bg-dark"  id="newtrick">
+    <aside class="bg-clear"  id="newtrick">
         <div class="container text-center">
             <div class="call-to-action">
                 <h2>Vous désirez ajouter un nouveau Trick ?</h2>
-                <a href="{{ path('s7t_h_directory_trickadd') }}" class="btn btn-default btn-xl sr-button">Créer un Trick !</a>
+                <a href="{{ path('s7t_h_directory_trickadd') }}" class="btn btn-reverso btn-xl">Créer un Trick !</a>
             </div>
         </div>
     </aside>
@@ -124,4 +138,3 @@
     </section>
 
 {% endblock %}
-
