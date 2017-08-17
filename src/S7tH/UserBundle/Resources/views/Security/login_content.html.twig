@@ -1,26 +1,37 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
-
-<form action="{{ path("fos_user_security_check") }}" method="post">
-    {% if csrf_token %}
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+<div class="well wellmore">
+    
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    <label for="username">{{ 'security.login.username'|trans }}</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+        {% if csrf_token %}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        {% endif %}
+        <div class="col-sm-12 log-frame">
+            <label class="col-sm-4 log-label" for="username">{{ 'security.login.username'|trans }}</label>
+            <input class="col-sm-8 log-field" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+        </div>
 
-    <label for="password">{{ 'security.login.password'|trans }}</label>
-    <input type="password" id="password" name="_password" required="required" />
+        <div class="col-sm-12 log-frame">
+            <label class="col-sm-4 log-label" for="password">{{ 'security.login.password'|trans }}</label>
+            <input class="col-sm-8 log-field" type="password" id="password" name="_password" required="required" />
+        </div>
+        
+        <div class="col-sm-12 log-frame">
+            <label class="col-sm-4 log-label" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+            <input class="col-sm-1 log-field" type="checkbox" id="remember_me" name="_remember_me" value="on" />
+        </div>
 
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+        <input class="btn btn-primary" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+    </form>
 
-    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
-</form>
-<hr>
-<div>
-    <a class="page-scroll" href="{{ path('fos_user_resetting_request') }}"><span class="glyphicon glyphicon-globe"></span> Mot de passe perdu ?</a>
+    <hr>
+    <div>
+        <a class="log-lost page-scroll" href="{{ path('fos_user_resetting_request') }}"><span class="glyphicon glyphicon-globe"></span> Mot de passe perdu ?</a>
+    </div>
+    
 </div>
+

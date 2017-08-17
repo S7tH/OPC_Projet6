@@ -18,7 +18,7 @@
         <div class="header-content-inner">
             {# we display flash message wich name is « notice » #}
                     {% for message in app.session.flashbag.get('notice') %}
-                        <p>Message flash : {{ message }}</p>
+                        <p class="msg-flash"> {{ message }}</p>
                     {% endfor %}
             <h1 id="homeHeading">Bienvenue sur SnowTrickMania.com</h1>
                 <hr>
@@ -47,7 +47,7 @@
 
                             {# we display flash message wich name is « notice » #}
                             {% for message in app.session.flashbag.get('notice') %}
-                                 <p>Message flash : {{ message }}</p>
+                                 <p class="msg-flash">{{ message }}</p>
                             {% endfor %}
                             
                             

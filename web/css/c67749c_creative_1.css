@@ -161,7 +161,7 @@ header {
   background-size: cover;
   -o-background-size: cover;
   background-position: center;
-  background-image: url('../../bundles/s7thdirectory/img/header.jpg');
+  background-image: url('../../bundles/s7thdirectory/img/header.jpg');/*url('../img/header.jpg');*/
   text-align: center;
   color: white;
 }
@@ -421,6 +421,18 @@ input[type="hidden"], input[type="image"], input[type="file"] {
     border: initial;
 }
 
+.msg-flash
+{
+  text-shadow: 1px 1px 1px black;
+  font-weight: bold;
+  background-color: #33355b;
+  border-radius:20px;
+  border: 2px ridge #82c44c;
+  padding: 1%;
+}
+
+/* trick elt*/
+
 .tricktitle, .trickframe
 {
   background-color: rgba(255,255,255,0.6);
@@ -487,6 +499,192 @@ input[type="hidden"], input[type="image"], input[type="file"] {
 .img-rules
 {
   border-radius: 40px;
+}
+
+
+
+.img-trick
+{
+  max-width: 100%;
+  max-height:600px;
+  z-index: 1;
+  margin-bottom: 2%;
+  border-radius: 40px;
+  border:2px ridge silver;
+}
+
+.trick-category
+{
+    position: fixed;
+    top:4%;
+    z-index: 2;
+    font-size:1.5em;;
+    text-shadow: 2px 2px 2px black;
+}
+
+.trick-name
+{
+    position: fixed;
+    top:36%;
+    z-index: 2;
+    font-size:4em;;
+    text-shadow: 2px 2px 2px black;
+}
+
+.trick-button
+{
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.trick-description
+{
+  border: 1px ridge silver;
+  margin-top:6%;
+  margin-bottom: 4%;
+  padding:1%;
+  border-radius: 20px;
+  color: black;
+  background-color: rgba(0, 0, 0, 0.8);
+  word-wrap: break-word;
+  overflow: auto;
+  color: snow;
+}
+
+.trick-advert
+{
+  height:100%;
+  border: 1px ridge silver;
+  border-radius:20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #82c44c;
+  margin-top: 100px;
+  padding:1%;
+}
+
+.trick-advert a
+{
+  text-decoration: none;
+}
+
+/*add edit*/
+
+.adit-file
+{
+  margin-top:2%;
+  margin-bottom: 2%;
+}
+
+/*commentaries*/
+
+.com-frame
+{
+  padding: 1%;
+  border:1px ridge silver;
+  border-radius:20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 2%;
+}
+
+.com-one
+{
+  margin:1%;
+  padding:1%;
+  border:1px ridge #82c44c;
+  border-radius:20px;
+  background-color: #33355b;
+  height: 100%;
+}
+
+.com-img
+{
+  border-radius: 20px;
+  border:1px ridge silver;
+}
+
+.com-txt
+{
+  padding: 1%;
+  text-align: justify;
+}
+
+.com-date
+{
+  text-align: right;
+}
+
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover
+{
+    z-index: 3;
+    color: #82c44c;
+    cursor: pointer;
+    background-color: #33355b;
+    border-color: silver;
+    text-shadow: 1px 1px 1px black;
+}
+
+/* login */
+
+.log-frame
+{
+ margin-bottom: 2%;
+}
+
+.log-label
+{
+  text-align: left;
+}
+
+.log-label:hover
+{
+  color:#82c44c;
+  cursor:pointer;
+}
+
+.log-field
+{
+ border-radius: 10px;
+ color: #33355b;
+ font-weight: bold;
+}
+
+.log-lost
+{
+  font-weight: bold;
+}
+
+.log-lost:hover
+{
+  text-decoration: none
+}
+
+.log-mail-confirm
+{
+  padding: 2%;
+  text-align: justify;
+  line-height:200%;
+}
+
+.register-button
+{
+  margin-top: 2%;
+}
+
+/* profil*/
+.profil-avatar-frame
+{
+  text-align: left;
+}
+
+.profil-avatar
+{
+  border:2px ridge silver;
+  border-radius: 10px;
 }
 
 .bg-clear {

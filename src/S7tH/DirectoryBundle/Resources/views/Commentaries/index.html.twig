@@ -11,6 +11,11 @@
                     <a href="#page-bottom" class="btn btn-primary btn-xl page-scroll"><span class="glyphicon glyphicon-triangle-bottom"></span> Changer de page / Bas de page<span class="glyphicon glyphicon-triangle-bottom"></span></a>
                     <hr class="light">
                     <p class="text-faded">
+
+                    {# we display flash message wich name is « com » #}
+                    {% for message in app.session.flashbag.get('com') %}
+                        <p class="msg-flash">{{ message }}</p>
+                    {% endfor %}
                     
                     <div class="com-frame col-xs-12">
                         {# Displaying of commentaries if there are of them #}

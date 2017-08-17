@@ -161,7 +161,7 @@ header {
   background-size: cover;
   -o-background-size: cover;
   background-position: center;
-  background-image: url('../img/backhead.jpg');/*url('../img/header.jpg');*/
+  background-image: url('../../Resources/public/img/header.jpg');/*url('../img/header.jpg');*/
   text-align: center;
   color: white;
 }

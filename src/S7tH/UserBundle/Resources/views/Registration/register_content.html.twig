@@ -1,14 +1,59 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+<div class="well wellmore">
 
-Tous les champs sont obligatoires !
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+
+    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'form-horizontal'}}) }}
+    
+    <div class="col-xs-12 log-frame">
+        {# label generating #}
+        {{ form_label(form.email, "*Votre adresse e-mail", {'label_attr': {'class': 'col-xs-4 log-label'}}) }}
+        {# input generating #}
+        {{ form_widget(form.email, {'attr': {'class': 'col-xs-8 log-field'}}) }}
     </div>
-{{ form_end(form) }}
-    <hr>
-    *Si vous n'avez pas encore de compte Gravatar, créez en un 
-    <a href="https://signup.wordpress.com/signup/?ref=oauth2&oauth2_redirect=d62ff64ae1ff0edfc25686d33344e5d7%40https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fclient_id%3D1854%26response_type%3Dcode%26blog_id%3D0%26state%3D618fcb277bbbfd2c2e703c0dc0d3030dcc21ecfd6de28fddf7c9c5aafce2aa2a%26redirect_uri%3Dhttps%253A%252F%252Fen.gravatar.com%252Fconnect%252F%253Faction%253Drequest_access_token%26jetpack-code%26jetpack-user-id%3D0%26action%3Doauth2-login&wpcom_connect=1" target="no_blank"/>ici</a>
 
+    <div class="col-xs-12 log-frame">
+        {# label generating #}
+        {{ form_label(form.username, "*Votre nom d'utilisateur", {'label_attr': {'class': 'col-xs-4 log-label'}}) }}
+        {# input generating #}
+        {{ form_widget(form.username, {'attr': {'class': 'col-xs-8 log-field'}}) }}
+    </div>
+
+    <div class="col-xs-12 log-frame">
+        {# label generating #}
+        {{ form_label(form.plainPassword.first, "*Votre mot de passe", {'label_attr': {'class': 'col-xs-4 log-label'}}) }}
+        {# input generating #}
+        {{ form_widget(form.plainPassword.first, {'attr': {'class': 'col-xs-8 log-field'}}) }}
+    </div>
+
+    <div class="col-xs-12 log-frame">
+        {# label generating #}
+        {{ form_label(form.plainPassword.second, "*Confirmez votre mot de passe", {'label_attr': {'class': 'col-xs-4 log-label'}}) }}
+        {# input generating #}
+        {{ form_widget(form.plainPassword.second, {'attr': {'class': 'col-xs-8 log-field'}}) }}
+    </div>
+
+    <div class="col-xs-12 log-frame">
+        <hr>
+        <a href="https://fr.gravatar.com/" target="no_blank"/>*Cliquez sur ce lien, si vous n'avez pas encore de compte Gravatar</a>
+        <hr>
+    </div>
+
+    <div class="col-xs-12 log-frame">
+        {# label generating #}
+        {{ form_label(form.gravatar, "*Votre e-mail liée à gravatar", {'label_attr': {'class': 'col-xs-4 log-label'}}) }}
+        {# input generating #}
+        {{ form_widget(form.gravatar, {'attr': {'class': 'col-xs-8 log-field'}}) }}
+        </div>
+
+    {{ form_widget(form) }}
+
+    
+
+   
+    <div>
+        <input class="btn btn-primary register-button" type="submit" value="{{ 'registration.submit'|trans }}" />
+    </div>
+    {{ form_end(form) }}
+    
+    </div>

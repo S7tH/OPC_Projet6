@@ -67,7 +67,7 @@ class TricksController extends Controller
 
                 $em->flush();//send the request and save in the db
 
-                $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistrée.');
+                $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistré.');
 
                 // We are displaying now the trick introduce page thanks a redirection to its route.
                 return $this->redirectToRoute('s7t_h_directory_tricklist');
@@ -112,7 +112,7 @@ class TricksController extends Controller
                 $em->persist($tricks);//create the request sql
                 $em->flush();//send the request and save in the db
 
-                $request->getSession()->getFlashBag()->add('notice', 'Trick bien modifié et enregistrée.');
+                $request->getSession()->getFlashBag()->add('notice', 'Trick bien modifié et enregistré.');
 
                 // We are displaying now the trick introduce page thanks a redirection to its route.
                 return $this->redirectToRoute('s7t_h_directory_tricklist');

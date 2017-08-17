@@ -1,0 +1,12 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="well wellmore">
+
+    {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'form-horizontal' } }) }}
+        {{ form_widget(form) }}
+        <div>
+            <input class="btn btn-primary" type="submit" value="{{ 'resetting.reset.submit'|trans }}" />
+        </div>
+    {{ form_end(form) }}
+
+</div>

@@ -3,10 +3,6 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <h3>Ajouter un commentaire</h3>
-                     {# we display flash message wich name is « com » #}
-                    {% for message in app.session.flashbag.get('com') %}
-                        <p>Message flash : {{ message }}</p>
-                    {% endfor %}
                      {{ include('S7tHDirectoryBundle:Commentaries:form.html.twig') }}
                 </div>
             </div>
