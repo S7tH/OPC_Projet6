@@ -1,0 +1,33 @@
+<div class="well wellmore">
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+  {# general errors of the form #}
+  {{ form_errors(form) }}
+
+
+  {# the same thing for an another field #}
+  <div class="form-group">
+    {{ form_label(form.name, "Nom de votre catégorie", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.name) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+  {# we just display the widget for the button #}
+  {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+
+  <a href="{{ path('s7t_h_directory_admin') }}" class="btn btn-primary btn-md page-scroll">Annuler</a>
+
+    
+
+  {# auto generating of the fields wich are not read again.
+     In this example, the field CSRF will be generate automatically
+     and all hidden fields (type « hidden »). #}
+  {{ form_rest(form) }}
+
+  {# close the mark <form> of  HTML formulaire #}
+  {{ form_end(form) }}
+</div>
+  
+

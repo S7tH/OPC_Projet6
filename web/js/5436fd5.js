@@ -1,6 +1,6 @@
 $(document).ready(function() {
     // recover the markup <div> wich contains the attribut « data-prototype ».
-    var $container = $('div#s7th_directorybundle_tricks_newcategories');
+    var $container = $('div#s7th_directorybundle_categoryadd_categories');
 
     // define an unique counter for each field
     var index = $container.find(':input').length;
@@ -30,7 +30,7 @@ $(document).ready(function() {
       // - le texte "__name__" qu'il contient par le numéro du champ
       var template = $container.attr('data-prototype')
         .replace(/__name__label__/g, 'Catégorie n°' + (index+1))
-        .replace(/__name__/g,        index)
+        .replace(/__name__/g, index)
       ;
 
       // On crée un objet jquery qui contient ce template

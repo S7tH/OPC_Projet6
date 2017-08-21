@@ -10,4 +10,6 @@
     </div>
         <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
         <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+
+        <a class="btn btn-primary register-button" href="{{ path('fos_user_profile_edit') }}">Editer son profil</a>
 </div>

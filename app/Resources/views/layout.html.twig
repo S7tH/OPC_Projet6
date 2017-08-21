@@ -16,8 +16,8 @@
 
 {% block stylesheets %}    
 
-    {% stylesheets filter='cssrewrite, ?scssphp, ?jsqueeze'
-                    'bundles/s7thdirectory/css/*'        
+    {% stylesheets filter='cssrewrite,?scssphp, ?jsqueeze'
+                    'bundles/s7thdirectory/css/creative.css'     
     %}
         <!-- Theme CSS -->
         <link href="{{ asset_url }}" rel="stylesheet" type="text/css">
@@ -76,6 +76,11 @@
                                 <a class="page-scroll" href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user"></span> s'inscrire</a>
                             </li>
                         {% endif %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li>
+                                <a class="page-scroll" href="{{ path('s7t_h_directory_admin') }}"><span class="glyphicon glyphicon-user"></span> Admin</a>
+                            </li>
+                    {% endif %}
                     {% endblock %} 
                 </ul>
             </div>

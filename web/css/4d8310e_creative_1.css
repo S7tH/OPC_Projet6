@@ -161,7 +161,7 @@ header {
   background-size: cover;
   -o-background-size: cover;
   background-position: center;
-  background-image: url('../img/backhead.jpg');
+  background-image: url('bundles/s7thdirectory/img/backhead.jpg');
   text-align: center;
   color: white;
 }
@@ -686,8 +686,6 @@ input[type="hidden"], input[type="image"], input[type="file"] {
   border:2px ridge silver;
   border-radius: 10px;
 }
-
-
 
 .bg-clear {
   background-color: rgba(255,255,255,0.6);

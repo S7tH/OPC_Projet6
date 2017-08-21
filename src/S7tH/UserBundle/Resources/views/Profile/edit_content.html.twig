@@ -1,0 +1,41 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="well wellmore">
+{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'form-horizontal' } }) }}
+    
+    <div class="col-xs-12 log-frame">
+        {# label generating #}
+        {{ form_label(form.username, "*Votre adresse e-mail", {'label_attr': {'class': 'col-xs-4 log-label'}}) }}
+        {# input generating #}
+        {{ form_widget(form.username, {'attr': {'class': 'col-xs-8 log-field'}}) }}
+    </div>
+
+    <div class="col-xs-12 log-frame">
+        {# label generating #}
+        {{ form_label(form.email, "*Votre adresse e-mail", {'label_attr': {'class': 'col-xs-4 log-label'}}) }}
+        {# input generating #}
+        {{ form_widget(form.email, {'attr': {'class': 'col-xs-8 log-field'}}) }}
+    </div>
+
+    <div class="col-xs-12 log-frame">
+        {# label generating #}
+        {{ form_label(form.current_password, "*Votre mot de passe actuel", {'label_attr': {'class': 'col-xs-4 log-label'}}) }}
+        {# input generating #}
+        {{ form_widget(form.current_password, {'attr': {'class': 'col-xs-8 log-field'}}) }}
+    </div>
+
+    
+
+    <div>
+        <input class="btn btn-primary register-button" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+        <a class="btn btn-primary register-button" href="{{ path('fos_user_profile_show') }}">Annuler</a>
+    </div>
+    
+    {{ form_widget(form) }}
+
+{{ form_end(form) }}
+</div>
+
+
+
+

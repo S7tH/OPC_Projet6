@@ -20,4 +20,14 @@ s7t_h_directory_trickview:
     requirements:
       page: \d+
 
-      
+s7t_h_directory_admin:
+    path:     /admin
+    defaults: { _controller: S7tHDirectoryBundle:Admin:index }
+
+s7t_h_directory_adminadd:
+    path:     /admin-category
+    defaults: { _controller: S7tHDirectoryBundle:Admin:add }
+
+s7t_h_directory_adminmember:
+    path:     /admin-members
+    defaults: { _controller: S7tHDirectoryBundle:Admin:member }
