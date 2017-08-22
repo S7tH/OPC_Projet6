@@ -31,3 +31,7 @@ s7t_h_directory_adminadd:
 s7t_h_directory_adminmember:
     path:     /admin-members
     defaults: { _controller: S7tHDirectoryBundle:Admin:member }
+
+s7t_h_directory_adminmember_role:
+    path:     /member-role/{nick}
+    defaults: { _controller: S7tHDirectoryBundle:Admin:rolemember }

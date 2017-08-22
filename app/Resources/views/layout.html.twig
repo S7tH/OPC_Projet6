@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    {% block meta %}{% endblock %}
 
     <title>{% block title %}SnowTrickmania.com{% endblock %}</title>
 
@@ -16,11 +17,11 @@
 
 {% block stylesheets %}    
 
-    {% stylesheets filter='cssrewrite,?scssphp, ?jsqueeze'
+    {% stylesheets filter='cssrewrite, ?yui_css,?yui_js, ?scssphp, ?jsqueeze'
                     'bundles/s7thdirectory/css/creative.css'     
     %}
         <!-- Theme CSS -->
-        <link href="{{ asset_url }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset_url }}" rel="stylesheet">
         
     {% endstylesheets %}
 
@@ -93,7 +94,7 @@
 
 
 
-    <header>
+    <header {# style="background-image: url('../web/bundles/s7thdirectory/img/backhead.jpg');"#}>
 {% block header %}{% endblock %}
     </header>
 

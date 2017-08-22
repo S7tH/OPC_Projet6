@@ -14,21 +14,57 @@
                     {% for message in app.session.flashbag.get('notice') %}
                         <p class="msg-flash"> {{ message }}</p>
                     {% endfor %}
+
+                    {# popup to confirm deleting user #}
+                    <div id="dialog-confirm" title="Confirmation de la suppression">
+                        <p>
+                            <span class="ui-icon ui-icon-alert"></span>
+                            Etes-vous sûr de vouloir supprimer cet utilisateur ?
+                        </p>
+                    </div>
+
             <h1 id="homeHeading">Administration Liste des membres</h1>
-
-                
-                {% for users in userlist %} 
-
-                    {{ users }}
-                    {# button edit #}
-                    <a href="{{ path('s7t_h_directory_admin', {'id':users.id}) }}">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </a>
-                    <hr>
-
-                {% endfor %}
-                
+            <br/>
+            <div class="panel panel-primary">
+                <table class="table table-striped table-condensed">
+                    <div class="panel-heading"> 
+                        <h3 class="panel-title">Panneau des utilisateurs inscrits sur le site</h3>
+                    </div>
+                    <thead>
+                        <tr>
+                            <th>Utilisateur</th>
+                            <th>E-mail</th>
+                            <th>Role</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for users in userlist %}
+                    <tr>
+                        <td class="pannel-txt">{{ users }}</td>
+                        <td class="pannel-txt">{{ users.email }}</td>
+                        <td class="pannel-txt">
+                            {# we want just the main role #}
+                            {{ users.roles[0] }}
+                        </td>
+                        <td class="pannel-txt">
+                        {# button change role #}
+                            <a href="{{ path('s7t_h_directory_adminmember_role', {'nick':users.username}) }}">
+                                <span class="glyphicon glyphicon-plus-sign"></span> Changer son role
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <a href="{{ path('s7t_h_directory_admin') }}" class="btn btn-primary btn-md">Retour au panneau d'administration</a>
         </div>
     </div>
 
 {% endblock %}
+
+
+
+
+                

@@ -75,4 +75,40 @@ class AdminController extends Controller
             'userlist' => $users
         ));
     }
+
+    public function rolememberAction($nick, Request $request)
+    {
+        
+        //recover the entity manager
+        $userManager = $this->get('fos_user.user_manager');
+
+        //recover the entity with the same id
+        $user = $userManager->findUserBy(array('username' => $nick ));
+        
+        // if the id don't exist
+        if (null === $nick)
+        {
+            throw new NotFoundHttpException("L'utilisateur' ".$nick." n'existe pas.");
+        }
+
+        if ($request->isMethod('POST'))
+        {
+                //we delete our entity from the db
+                $role = $request->request->get('roles');
+                //in case where he is an admin who get a simple user
+                $user->removeRole('ROLE_ADMIN');
+                $user->addRole($role);
+                $userManager->updateUser($user);
+                $request->getSession()->getFlashBag()->add('notice', 'Role utilisateur bien pris en compte.');
+
+                // We are displaying now the adminpage page thanks a redirection to its route.
+                return $this->redirectToRoute('s7t_h_directory_adminmember');
+        }
+
+        
+
+        return $this->render('S7tHDirectoryBundle:Administration:rolemember.html.twig', array(
+            'user' => $user
+        ));
+    }
 }
