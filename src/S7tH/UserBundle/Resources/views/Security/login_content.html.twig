@@ -26,11 +26,15 @@
         </div>
 
         <input class="btn btn-primary" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+        <a class="btn btn-primary" href="{{ path('s7t_h_directory_tricklist') }}">Annuler</a>
     </form>
 
     <hr>
     <div>
-        <a class="log-lost page-scroll" href="{{ path('fos_user_resetting_request') }}"><span class="glyphicon glyphicon-globe"></span> Mot de passe perdu ?</a>
+        <a class="log-lost" href="{{ path('fos_user_resetting_request') }}"><span class="glyphicon glyphicon-globe"></span> Mot de passe perdu ?</a>
+        <br/>
+        <br/>
+        <a class="log-lost" href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user"></span> Pas encore inscrit ?</a>
     </div>
     
 </div>

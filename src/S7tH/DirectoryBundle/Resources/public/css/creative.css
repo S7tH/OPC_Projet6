@@ -628,8 +628,7 @@ input[type="hidden"], input[type="image"], input[type="file"] {
     text-shadow: 1px 1px 1px black;
 }
 
-/* login */
-
+/*log*/
 .log-frame
 {
  margin-bottom: 2%;
@@ -687,17 +686,10 @@ input[type="hidden"], input[type="image"], input[type="file"] {
   border-radius: 10px;
 }
 
-#dialog-confirm
-{
-  display:none;
+.bg-clear {
+  background-color: rgba(255,255,255,0.6);
+  color:#33355b;
 }
-
-.ui-icon ui-icon-alert
-{
-  float:left;
-  margin:0 7px 20px 0;
-}
-
 
 .table
 {

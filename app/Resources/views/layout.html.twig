@@ -63,6 +63,7 @@
                     
                     {% block log %}
                         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                        <ul class="nav navbar-nav navbar-left">
                             <li>
                                 <a class="page-scroll" href="{{ path('fos_user_profile_show') }}"><span class="glyphicon glyphicon-user"></span> Profil de {{ app.user.username }}</a>
                             </li>
@@ -81,6 +82,7 @@
                             <li>
                                 <a class="page-scroll" href="{{ path('s7t_h_directory_admin') }}"><span class="glyphicon glyphicon-user"></span> Admin</a>
                             </li>
+                        </ul>
                     {% endif %}
                     {% endblock %} 
                 </ul>
@@ -102,9 +104,29 @@
 {% block page %}{% endblock %}
     
 
-    <footer>
+    <footer id="footer">
 
-{% block footer %}{% endblock %}
+{% block footer %}
+
+    <section class="bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Participez a l'évolution du site !</h2>
+                    <hr class="primary">
+                    <p>N'hésitez pas à partager avec la communauté votre connaissance dans l'art du Trick en postant une <a href="{{ path('s7t_h_directory_trickadd') }}">nouvelle figure (Trick)</a>
+             ou tout simplement en discutant avec la communauté des figures déjà répertoriées.</p>
+                </div>
+             
+                <div class="col-lg-12 text-center">
+                    <i class="fa fa-envelope-o fa-3x sr-contact"></i>
+                    <p>Un problème ? contactez un admin à l'adresse suivante <a href="mailto:aurelien.theriot@gmail.com">feedback@snowtrickmania.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
 
      </footer>
 
