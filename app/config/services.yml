@@ -18,7 +18,9 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    # embed Gravatar in fosuserbundle registration
     s7th.form.registration:
-        class: S7tH\UserBundle\Form\RegistrationType
+        class: S7tH\UserBundle\Form\Type\RegistrationType
         tags:
             - { name: form.type, alias: gravaform}
