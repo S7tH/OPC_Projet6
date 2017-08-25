@@ -19,7 +19,7 @@ class ImageType extends AbstractType
         $builder
             //->add('url', TextType::class)
             //->add('alt', TextType::class)
-            ->add('file', FileType::class, array('label' => ' '));
+            ->add('file', FileType::class, array('label' => ' ', 'required' => false));
             // label is empty because a 2nd label was displaying by default (this) and broke the design.
            
     }

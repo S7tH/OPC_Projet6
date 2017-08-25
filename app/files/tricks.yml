@@ -1,45 +1,44 @@
 "Mute":
     category: Grabs
     description: Saisie de la carre frontside de la planche entre les deux pieds avec la main avant.
-    image: http://www.themountainpulse.com/wp-content/images/2012/12/snowboarer_air.jpg
+
 "Sad":
      category: Grabs
      description: Saisie de la carre backside de la planche, entre les deux pieds, avec la main avant.
-     image: http://cdn.snowboarding.transworld.net/blogs.dir/442/files/2015/06/Melon_Jon_Castro_Back_Fenelon.jpg
+
 "Melancholie":
      category: Grabs
      description: Saisie de la carre backside de la planche, entre les deux pieds, avec la main avant.
-     image: http://snowforever.free.fr/snowboard/grabs/tindy.jpg
+
 "Style week":
      category: Grabs
      description: Saisie de la carre backside de la planche, entre les deux pieds, avec la main avant.
-     image: https://usatunofficial.files.wordpress.com/2011/12/grab-2.jpg
+
 "Indy":
      category: Grabs
      description: Saisie de la carre frontside de la planche, entre les deux pieds, avec la main arrière.
-     image: https://media.defense.gov/2011/Feb/11/2000286330/-1/-1/0/091229-F-1936B-1190.JPG
+
 "Stalefish":
      category: Grabs
      description: Saisie de la carre backside de la planche entre les deux pieds avec la main arrière.
-     image: https://www.varialtv.com/wp-content/uploads/2016/12/stale_fish.jpg
+
 
 "180":
      category: Rotations
      description: Désigne un demi-tour, soit 180 degrés d'angle.
-     image: https://coresites-cdn.factorymedia.com/whitelines_new/wp-content/uploads/2013/09/FS180.jpg
+
 
 
 "Backflip":
     category: Flip
     description: Pour une rotation en arrière.
-    image: https://i.ytimg.com/vi/uN1d_Tsmsek/maxresdefault.jpg
+
 
 "Nose slide":
     category: Slides
     description: Slide avec le nez de la planche sur la barre.
-    image: https://www.weareucpa.com/wp-content/uploads/2016/01/deformation-slide-snowboard-freestyle-e1452856352169.jpg
+
 
 "Japan air":
     category: Old School
     description: Saisie de la planche au centre avec fléchissement des jambes vers l'arrière et bombage du torse en avant pour se propuler.
-    image: https://s-media-cache-ak0.pinimg.com/736x/4d/7e/cf/4d7ecfbbfee2fde8a4353522a0c2da74--snowboarding-girl-snowy-mountains.jpg

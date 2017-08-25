@@ -48,7 +48,7 @@ class Image
     /** 
      * @var UploadedFile
      *
-     * @Assert\Image(maxSize=1000000, maxWidth=1400, maxHeight= 1400)
+     * @Assert\Image(maxSize=1000000, maxWidth=640,minWidth=640, maxHeight= 480, minHeight= 480)
      */
     private $file;
 

@@ -211,17 +211,33 @@ class TricksController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         //recover the repository
-        $repository = $em->getRepository('S7tHDirectoryBundle:Tricks');
+        $repoTricks = $em->getRepository('S7tHDirectoryBundle:Tricks');
+        
         
         //recover the entity with the same id
-        $tricks = $repository->find($id);
+        $tricks = $repoTricks->find($id);
+
         
         // if the id don't exist
-        if (null === $tricks)
+        if(null === $tricks)
         {
             throw new NotFoundHttpException("Le trick ayant l'id ".$id." n'existe pas.");
         }
 
+        //we recover and check if the trick is linked to commentaries
+        $repoCom = $em->getRepository('S7tHDirectoryBundle:Commentary');
+        $comments = $repoCom->findBy(array('trick' => $id));
+
+        foreach($comments as $comment)
+        {
+            // if the trick_id exist
+            if(null !== $comment)
+            {
+                //we delete our entity from the db
+                $em->remove($comment);//create the request sql for deleting
+            }
+        }
+ 
         //we delete our entity from the db
         $em->remove($tricks);//create the request sql for deleting
         $em->flush();//send the request and delete our object in the db

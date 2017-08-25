@@ -65,7 +65,7 @@
                         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                         <ul class="nav navbar-nav navbar-left">
                             <li>
-                                <a class="page-scroll" href="{{ path('fos_user_profile_show') }}"><span class="glyphicon glyphicon-user"></span> Profil de {{ app.user.username }}</a>
+                                <a class="page-scroll" href="{{ path('fos_user_profile_show') }}"><span class="glyphicon glyphicon-user"></span> Mon Profil &rArr; {{ app.user.username }}</a>
                             </li>
                             <li>
                                 <a class="page-scroll" href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-off"></span> se déconnecter</a>

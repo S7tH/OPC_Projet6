@@ -35,7 +35,7 @@ class TricksType extends AbstractType
                               'choice_label' => 'name',
                               'multiple'     => false)
                  )
-            ->add('image', ImageType::class)
+            ->add('image', ImageType::class, array('required' => false))
             ->add('save', SubmitType::class, array('label' => 'Enregistrer'));      
     }
     
