@@ -1,11 +1,18 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="fos_user_user_show">
-    {% if gravatar_exists(user.gravatar) %}
-        <img src="{{ gravatar(user.gravatar) }}" />
-    {% else %}
-        <img src="{{ gravatar('default') }}" />
-    {% endif %}
-    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+
+
+<div class="well wellmore">
+    <div class="col-xs-12 profil-avatar-frame">
+        {% if gravatar_exists(user.gravatar) %}
+            <img class="profil-avatar" src="{{ gravatar(user.gravatar) }}" />
+        {% else %}
+            <img src="{{ gravatar('default') }}" />
+        {% endif %}
+    </div>
+        <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+        <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+
+        <a class="btn btn-primary register-button" href="{{ path('fos_user_profile_edit') }}">Editer son profil</a>
+        <a class="btn btn-primary register-button" href="{{ path('fos_user_change_password') }}">Changer son mot de passe</a>
 </div>

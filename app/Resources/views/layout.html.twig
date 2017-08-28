@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    {% block meta %}{% endblock %}
 
     <title>{% block title %}SnowTrickmania.com{% endblock %}</title>
 
@@ -14,13 +15,13 @@
     <!-- CDN Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
-    
-    {% stylesheets filter='cssrewrite, ?scssphp, ?jsqueeze'
-        'bundles/s7thdirectory/magnific-popup/magnific-popup.css'
-        'bundles/s7thdirectory/css/creative.css'
+{% block stylesheets %}    
+
+    {% stylesheets filter='cssrewrite, ?yui_css,?yui_js, ?scssphp, ?jsqueeze'
+                    'bundles/s7thdirectory/css/creative.css'     
     %}
         <!-- Theme CSS -->
-        <link href="{{ asset_url }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset_url }}" rel="stylesheet">
         
     {% endstylesheets %}
 
@@ -31,7 +32,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-{% block stylesheets %}{% endblock %}
+{% endblock %}
 
 </head>
 
@@ -62,8 +63,9 @@
                     
                     {% block log %}
                         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                        <ul class="nav navbar-nav navbar-left">
                             <li>
-                                <a class="page-scroll" href="{{ path('fos_user_profile_show') }}"><span class="glyphicon glyphicon-user"></span> Profil de {{ app.user.username }}</a>
+                                <a class="page-scroll" href="{{ path('fos_user_profile_show') }}"><span class="glyphicon glyphicon-user"></span> Mon Profil &rArr; {{ app.user.username }}</a>
                             </li>
                             <li>
                                 <a class="page-scroll" href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-off"></span> se déconnecter</a>
@@ -76,7 +78,13 @@
                                 <a class="page-scroll" href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user"></span> s'inscrire</a>
                             </li>
                         {% endif %}
-                    {% endblock %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li>
+                                <a class="page-scroll" href="{{ path('s7t_h_directory_admin') }}"><span class="glyphicon glyphicon-user"></span> Admin</a>
+                            </li>
+                        </ul>
+                    {% endif %}
+                    {% endblock %} 
                 </ul>
             </div>
     <!-- /.navbar-collapse -->
@@ -88,16 +96,37 @@
 
 
 
-    <header>
+    <header {# style="background-image: url('../web/bundles/s7thdirectory/img/backhead.jpg');"#}>
 {% block header %}{% endblock %}
     </header>
 
-
+    
 {% block page %}{% endblock %}
+    
 
-    <footer>
+    <footer id="footer">
 
-{% block footer %}{% endblock %}
+{% block footer %}
+
+    <section class="bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Participez a l'évolution du site !</h2>
+                    <hr class="primary">
+                    <p>N'hésitez pas à partager avec la communauté votre connaissance dans l'art du Trick en postant une <a href="{{ path('s7t_h_directory_trickadd') }}">nouvelle figure (Trick)</a>
+             ou tout simplement en discutant avec la communauté des figures déjà répertoriées.</p>
+                </div>
+             
+                <div class="col-lg-12 text-center">
+                    <i class="fa fa-envelope-o fa-3x sr-contact"></i>
+                    <p>Un problème ? contactez un admin à l'adresse suivante <a href="mailto:aurelien.theriot@gmail.com">feedback@snowtrickmania.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
 
      </footer>
 
@@ -119,7 +148,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     
     {% javascripts 
-        'bundles/s7thdirectory/magnific-popup/jquery.magnific-popup.js'
         'bundles/s7thdirectory/scrollreveal/scrollreveal.js'
         'bundles/s7thdirectory/js/creative.js'
     %}

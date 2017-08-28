@@ -1,0 +1,5 @@
+services:
+    s7th.tricks.specimen:
+        class: S7tH\SpecimenBundle\Controller\TricksSpecimenController
+        calls:
+            - [setContainer, ["@service_container"]]

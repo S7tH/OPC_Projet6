@@ -1,0 +1,25 @@
+{% extends "S7tHDirectoryBundle::layout.html.twig" %}
+
+{% block linkmenu %}
+    <li>
+       <a class="page-scroll" href="{{ path('s7t_h_directory_tricklist') }}"><span class="glyphicon glyphicon-share-alt"></span> Retour à l'accueil</a>
+    </li>
+{% endblock %}
+
+{% block header %}
+
+    <div class="header-content">
+        <div class="header-content-inner">
+            {# we display flash message wich name is « notice » #}
+                    {% for message in app.session.flashbag.get('notice') %}
+                        <p class="msg-flash"> {{ message }}</p>
+                    {% endfor %}
+            <h1 id="homeHeading">Administration</h1>
+                <br/>
+                <a class="btn btn-primary btn-md" href="{{ path('s7t_h_directory_adminadd') }}">Créer une catégorie</a>
+                <hr>
+                <a class="btn btn-primary btn-md" href="{{ path('s7t_h_directory_adminmember') }}">Voir la liste des membres</a>
+        </div>
+    </div>
+
+{% endblock %}

@@ -39,7 +39,6 @@ class Commentary
      * @Assert\NotBlank()
      */
     private $message;
-
     /**
      * @ORM\ManyToOne(targetEntity="S7tH\DirectoryBundle\Entity\Tricks", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)

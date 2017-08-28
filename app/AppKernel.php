@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new S7tH\UserBundle\S7tHUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
+            new S7tH\SpecimenBundle\S7tHSpecimenBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -32,7 +32,6 @@ class Image
      * @var string
      *
      * @ORM\Column(name="url", type="string", length=255)
-     * @Assert\Url()
      */
     private $url;
 
@@ -49,15 +48,14 @@ class Image
     /** 
      * @var UploadedFile
      *
-     * @Assert\Image(maxSize=1000000, maxWidth=1400, maxHeight= 1400)
+     * @Assert\Image(maxSize=1000000, maxWidth=640,minWidth=640, maxHeight= 480, minHeight= 480)
      */
     private $file;
 
     /*attribut for save temporarily the name of file
     before deleting of trick with this file.*/
     private $tempFilename;
-
-
+  
     /**
      * Get id
      *

@@ -1,0 +1,44 @@
+"Mute":
+    category: Grabs
+    description: Saisie de la carre frontside de la planche entre les deux pieds avec la main avant.
+
+"Sad":
+     category: Grabs
+     description: Saisie de la carre backside de la planche, entre les deux pieds, avec la main avant.
+
+"Melancholie":
+     category: Grabs
+     description: Saisie de la carre backside de la planche, entre les deux pieds, avec la main avant.
+
+"Style week":
+     category: Grabs
+     description: Saisie de la carre backside de la planche, entre les deux pieds, avec la main avant.
+
+"Indy":
+     category: Grabs
+     description: Saisie de la carre frontside de la planche, entre les deux pieds, avec la main arrière.
+
+"Stalefish":
+     category: Grabs
+     description: Saisie de la carre backside de la planche entre les deux pieds avec la main arrière.
+
+
+"180":
+     category: Rotations
+     description: Désigne un demi-tour, soit 180 degrés d'angle.
+
+
+
+"Backflip":
+    category: Flip
+    description: Pour une rotation en arrière.
+
+
+"Nose slide":
+    category: Slides
+    description: Slide avec le nez de la planche sur la barre.
+
+
+"Japan air":
+    category: Old School
+    description: Saisie de la planche au centre avec fléchissement des jambes vers l'arrière et bombage du torse en avant pour se propuler.

@@ -2,17 +2,22 @@
 
 {% block linkmenu %}
     <li>
-        <a class="page-scroll" href="#page-top"><span class="glyphicon glyphicon-user"></span> Présentation</a>
+       <a class="page-scroll" href="{{ path('s7t_h_directory_tricklist') }}"><span class="glyphicon glyphicon-share-alt"></span> Retour à l'accueil</a>
     </li>
     <li>
-        <a class="page-scroll" href="#contact"><span class="glyphicon glyphicon-comment"></span> Me contacter</a>
+        <a class="page-scroll" href="#page-top"><span class="glyphicon glyphicon-envelope"></span> Présentation</a>
     </li>
     <li>
-        <a class="page-scroll" href="#other"><span class="glyphicon glyphicon-globe"></span> Réseaux</a>
-    </li>
+        <a class="page-scroll" href="#trick"><span class="glyphicon glyphicon-envelope"></span> Description</a>
     </li>
     <li>
-       <a class="page-scroll" href="{{ path('s7t_h_directory_tricklist') }}"><span class="glyphicon glyphicon-globe"></span> Home</a>
+        <a class="page-scroll" href="#com"><span class="glyphicon glyphicon-envelope"></span> Ecrire un commentaire</a>
+    </li>
+    <li>
+        <a class="page-scroll" href="#coms"><span class="glyphicon glyphicon-envelope"></span> Lire les commentaires</a>
+    </li>
+    <li>
+        <a class="page-scroll" href="#footer"><span class="glyphicon glyphicon-envelope"></span> Contact</a>
     </li>
 {% endblock %}
 
@@ -21,35 +26,80 @@
     <div class="header-content">
         <div class="header-content-inner">
             <div>
+                {# Displaying of trick #}
+                <div class="frame-trick clearfix hidden-xs col-sm-offset-1 col-sm-10">
+                    {% if tricks.image.webPath is defined %}
+                        <img class="img-trick" src="{{ asset(trick.image.webPath) }}" alt="{{ trick.image.alt }}"/>
+                    {% else %}
+                        <img class="img-trick" src="{{ asset("bundles/s7thdirectory/img/") }}specimen{{random(5)}}.jpeg" alt=" "/>
+                    {% endif %}
                     
-                    Notre trick
-
-                
-                    {# Displaying of trick #}
-                    <img class="trick-image" src="{{ asset(trick.image.webPath) }}" alt="{{ trick.image.alt }}"/>
-                    <ul>
-                        <li>{{ trick.category.name }}</li>
-                        <li>{{ trick.name }}</li>
-                        <li>{{ trick.description }}</li>
-                        <li>{{ trick.date|date("m/d/Y") }}</li>
-                    </ul>
+                    <div class="col-sm-5 trick-category">
+                        {{ trick.category.name|upper }}
+                    </div>
+                    <div class="col-sm-5 trick-name">
+                        {{ trick.name|upper }}
+                    </div>
+                </div>
             </div>
+            <div class="col-xs-offset-1 col-xs-10">
+                <h4 class="clearfix visible-xs">{{ trick.category.name|upper }}</h4>
+                <h1 class="clearfix visible-xs">{{ trick.name|upper }}</h1>
+            </div>
+           <a class="btn btn-primary btn-xl page-scroll trick-button" href="#trick"><span class="glyphicon glyphicon-triangle-bottom"></span> Voir la description <span class="glyphicon glyphicon-triangle-bottom"></span></a>
+            <a href="#coms" class="btn btn-primary btn-xl page-scroll"><span class="glyphicon glyphicon-triangle-bottom"></span> Voir les commentaires <span class="glyphicon glyphicon-triangle-bottom"></span></a>   
         </div>
     </div>
+    
+                
 {% endblock %}
 
 
 {% block page %}
-        {# add my template commentary form #}
-        {# if user is authentified #}
-        {% if is_granted('ROLE_USER') %}
-        {{ include('S7tHDirectoryBundle:Commentaries:add.html.twig') }}
-        {% else %}
-        <p>Veuillez vous authentifier pour laisser un commentaire. 
-        {% endif %}
-
-
-        {{ include('S7tHDirectoryBundle:Commentaries:index.html.twig') }}
+<section class="bg-primary" id="trick">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <a class="btn btn-primary btn-xl page-scroll" href="#page-top"><span class="glyphicon glyphicon-triangle-top"></span></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <div class="col-xs-offset-1 col-xs-10 trick-description" id="trick">
+                        {{ trick.description|raw }}
+                    </div>
+                    <a href="#com" class="btn btn-primary btn-xl page-scroll"><span class="glyphicon glyphicon-triangle-bottom"></span> Ecrire un commentaire <span class="glyphicon glyphicon-triangle-bottom"></span></a>
+                    <a href="#coms" class="btn btn-primary btn-xl page-scroll"><span class="glyphicon glyphicon-triangle-bottom"></span> Voir les Commentaires <span class="glyphicon glyphicon-triangle-bottom"></span></a>
+                </div>
+            </div>
+        </div>
+</section>
+<span id="com"></span>
+<section class="bg-primary" id="about">
+    <div class="container">
+                 <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 text-center">
+                        <a href="#trick" class="btn btn-primary btn-xl page-scroll trick-button"><span class="glyphicon glyphicon-triangle-top"></span> Voir la description du trick <span class="glyphicon glyphicon-triangle-top"></span></a>
+                        <a href="#coms" class="btn btn-primary btn-xl page-scroll"><span class="glyphicon glyphicon-triangle-bottom"></span> Voir les commentaires <span class="glyphicon glyphicon-triangle-bottom"></span></a>  
+                    </div>
+                </div>
+                {# add my template commentary form #}
+                {# if user is authentified #}
+                {% if is_granted('ROLE_USER') %}
+                    {{ include('S7tHDirectoryBundle:Commentaries:add.html.twig') }}
+                {% else %}
+                <div class="row">
+                    <div class="col-xs-6 col-xs-offset-3 text-center trick-advert">
+                        <a href="{{ path('fos_user_security_login') }}">
+                            <h5>*Veuillez vous authentifier pour laisser un commentaire*</h5>
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+                {{ include('S7tHDirectoryBundle:Commentaries:index.html.twig') }}
+    </div>
+</section>
+       
 
 {% endblock %}
 

@@ -64,9 +64,10 @@ class TricksController extends Controller
                 //we save our entity in the db
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($tricks);//create the request sql
+
                 $em->flush();//send the request and save in the db
 
-                $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistrée.');
+                $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistré.');
 
                 // We are displaying now the trick introduce page thanks a redirection to its route.
                 return $this->redirectToRoute('s7t_h_directory_tricklist');
@@ -111,10 +112,10 @@ class TricksController extends Controller
                 $em->persist($tricks);//create the request sql
                 $em->flush();//send the request and save in the db
 
-                $request->getSession()->getFlashBag()->add('notice', 'Trick bien modifié et enregistrée.');
+                $request->getSession()->getFlashBag()->add('notice', 'Trick bien modifié et enregistré.');
 
                 // We are displaying now the trick introduce page thanks a redirection to its route.
-                return $this->redirectToRoute('s7t_h_directory_trickview', array('id' => $tricks->getId()));
+                return $this->redirectToRoute('s7t_h_directory_tricklist');
         }
 
         return $this->render('S7tHDirectoryBundle:Tricks:edit.html.twig',
@@ -171,8 +172,8 @@ class TricksController extends Controller
 
                 $request->getSession()->getFlashBag()->add('com', 'Votre message a bien été enregistré.');
 
-                // Puis on redirige vers la page de visualisation de cettte annonce
-                return $this->redirectToRoute('s7t_h_directory_trickview', array('id' => $id, 'page' => $page));
+                // we redirect the route with an ancre to see directly our last readed comment with " $this->redirect($this->generateUrl"
+                return $this->redirect($this->generateUrl('s7t_h_directory_trickview', array('id' => $id, 'page' => 1)) .'#coms');
         }
         
         
@@ -210,17 +211,33 @@ class TricksController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         //recover the repository
-        $repository = $em->getRepository('S7tHDirectoryBundle:Tricks');
+        $repoTricks = $em->getRepository('S7tHDirectoryBundle:Tricks');
+        
         
         //recover the entity with the same id
-        $tricks = $repository->find($id);
+        $tricks = $repoTricks->find($id);
+
         
         // if the id don't exist
-        if (null === $tricks)
+        if(null === $tricks)
         {
             throw new NotFoundHttpException("Le trick ayant l'id ".$id." n'existe pas.");
         }
 
+        //we recover and check if the trick is linked to commentaries
+        $repoCom = $em->getRepository('S7tHDirectoryBundle:Commentary');
+        $comments = $repoCom->findBy(array('trick' => $id));
+
+        foreach($comments as $comment)
+        {
+            // if the trick_id exist
+            if(null !== $comment)
+            {
+                //we delete our entity from the db
+                $em->remove($comment);//create the request sql for deleting
+            }
+        }
+ 
         //we delete our entity from the db
         $em->remove($tricks);//create the request sql for deleting
         $em->flush();//send the request and delete our object in the db

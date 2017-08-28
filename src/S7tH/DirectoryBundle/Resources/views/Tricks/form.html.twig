@@ -4,14 +4,37 @@
   {# general errors of the form #}
   {{ form_errors(form) }}
 
-  {% if form.image is defined %}
-    {{ form_row(form.image) }}
-  {% endif %}
 
+  <div class="form-group">
+    <br/>
+    <p class="message">L'image du trick doit être de taille 640x480 et poid de 1MB maximum</p>
+    {# label generating #}
+    {{ form_label(form.image, "Image du Trick", {'label_attr': {'class': 'adit-file col-sm-2 control-label'}}) }}
 
-  {{ form_row(form.category) }}
+    {# Displaying of errors of this field #}
+    {{ form_errors(form.image) }}
+
+    <div class="col-sm-10">
+      {# input generating #}
+      {{ form_widget(form.image) }}
+    </div>
+  </div>
 
   {# manual generation and spread : #}
+  <div class="form-group">
+    {# label generating #}
+    {{ form_label(form.category, "Catégorie du Trick", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+    {# Displaying of errors of this field #}
+    {{ form_errors(form.category) }}
+
+    <div class="col-sm-10">
+      {# input generating #}
+      {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+  {# the same thing for an another field  #}
   <div class="form-group">
     {# label generating #}
     {{ form_label(form.name, "Nom du Trick", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
@@ -25,17 +48,20 @@
     </div>
   </div>
 
-  {# the same thing for an another field #}
+  {# the same thing for an another field  #}
   <div class="form-group">
     {{ form_label(form.description, "Description du trick", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
     {{ form_errors(form.description) }}
     <div class="col-sm-10">
-      {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+      {{ form_widget(form.description, {'attr': {'class': 'form-control'} }) }}
     </div>
   </div>
-  
+
+
   {# we just display the widget for the button #}
   {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+
+  <a href="{{ path('s7t_h_directory_tricklist') }}" class="btn btn-primary btn-md page-scroll">Annuler</a>
 
   {# auto generating of the fields wich are not read again.
      In this example, the field CSRF will be generate automatically
@@ -45,4 +71,3 @@
   {# close the mark <form> of  HTML formulaire #}
   {{ form_end(form) }}
 </div>
-
