@@ -1,0 +1,58 @@
+{% extends "S7tHDirectoryBundle::layout.html.twig" %}
+
+{% block linkmenu %}
+    <li>
+       <a class="page-scroll" href="{{ path('s7t_h_directory_tricklist') }}"><span class="glyphicon glyphicon-share-alt"></span> Retour à l'accueil</a>
+    </li>
+{% endblock %}
+
+{% block header %}
+
+    <div class="header-content">
+        <div class="header-content-inner">
+            {# we display flash message wich name is « notice » #}
+                    {% for message in app.session.flashbag.get('notice') %}
+                        <p class="msg-flash"> {{ message }}</p>
+                    {% endfor %}
+            <h1 id="homeHeading">Administration des Catégories</h1>
+            <br/>
+            <div class="panel panel-primary">
+                <table class="table table-striped table-condensed">
+                    <div class="panel-heading"> 
+                        <h3 class="panel-title">Panneau des Catégories existantes</h3>
+                    </div>
+                    <thead>
+                        <tr>
+                            <th>Catégorie</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for category in categorylist %}
+                    <tr>
+                        <td class="pannel-txt">{{ category.name }}</td>
+                        <td class="pannel-txt">
+                        {# button edit #}
+                            <a href="{{ path('s7t_h_directory_adminedit', {'id':category.id}) }}">
+                                <span class="glyphicon glyphicon-plus-sign"></span> Editer
+                            </a>
+                            {# button delete #}
+                            &nbsp; &nbsp;
+                            <a href="{{ path('s7t_h_directory_admindelete', {'id':category.id}) }}">
+                                <span class="glyphicon glyphicon-minus-sign"></span> Supprimer
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <hr>
+            <a class="btn btn-primary btn-md" href="{{ path('s7t_h_directory_adminadd') }}">Créer une nouvelle catégorie</a>
+                
+            <a href="{{ path('s7t_h_directory_admin') }}" class="btn btn-primary btn-md">Retour au panneau d'administration</a>
+            
+        </div>
+    </div>
+
+{% endblock %}

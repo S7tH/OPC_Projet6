@@ -83,22 +83,11 @@ class TricksController extends Controller
     /**
      * @Security("has_role('ROLE_USER')")
      */
-    public function editAction($id, Request $request )
+    public function editAction(Tricks $tricks, Request $request )
     {
         //recover entity manager
         $em = $this->getDoctrine()->getManager();
-        //recover the repository
-        $repository = $em->getRepository('S7tHDirectoryBundle:Tricks');
         
-        //recover the entity with the same id
-        //$tricks is a filled object of Tricks entity
-        $tricks = $repository->find($id);
-        
-        // if the id don't exist
-        if (null === $tricks)
-        {
-            throw new NotFoundHttpException("Le trick ayant l'id ".$id." n'existe pas.");
-        }
 
         //create the form
         $form = $this->get('form.factory')->create(TricksEditType::class, $tricks);
@@ -124,11 +113,13 @@ class TricksController extends Controller
             ));
     }
 
-    public function viewAction($id, $page, Request $request)
+    public function viewAction(Tricks $trick, $page, Request $request)
     {
         //recover the entity manager
         $em = $this->getDoctrine()->getManager();
 
+        
+        /* method without paraconverter with $id in the parameter instead of Tricks $trick and $id instead of $trick->getId()
         
         //recover the entity with the same id after had recover the repository
         //$tricks is a filled object of Tricks entity
@@ -139,15 +130,15 @@ class TricksController extends Controller
         {
             throw new NotFoundHttpException("Le trick ayant l'id ".$id." n'existe pas.");
         }
+        // with param converter this lines are useless
+        */
 
        
         
-
-        
-
         //we recover the user instance for our commentary
         $user = $this->getUser();
         $commentary = null;
+
 
         //if any user is connected user is null and we don't build a form and don't display it in twig view
         if ($user !== null)
@@ -173,7 +164,7 @@ class TricksController extends Controller
                 $request->getSession()->getFlashBag()->add('com', 'Votre message a bien été enregistré.');
 
                 // we redirect the route with an ancre to see directly our last readed comment with " $this->redirect($this->generateUrl"
-                return $this->redirect($this->generateUrl('s7t_h_directory_trickview', array('id' => $id, 'page' => 1)) .'#coms');
+                return $this->redirect($this->generateUrl('s7t_h_directory_trickview', array('id' => $trick->getId(), 'page' => 1)) .'#coms');
         }
         
         
@@ -201,32 +192,18 @@ class TricksController extends Controller
             'form' => $form->createView(),
             'commentaries' => $commentaries,
             'paging' => $paging,
-            'id' => $id,
+            'id' => $trick->getId(),
         ));
     }
 
-    public function deleteAction($id, Request $request)
+    public function deleteAction(Tricks $tricks, Request $request)
     {
         //recover the entity manager
         $em = $this->getDoctrine()->getManager();
 
-        //recover the repository
-        $repoTricks = $em->getRepository('S7tHDirectoryBundle:Tricks');
-        
-        
-        //recover the entity with the same id
-        $tricks = $repoTricks->find($id);
-
-        
-        // if the id don't exist
-        if(null === $tricks)
-        {
-            throw new NotFoundHttpException("Le trick ayant l'id ".$id." n'existe pas.");
-        }
-
         //we recover and check if the trick is linked to commentaries
         $repoCom = $em->getRepository('S7tHDirectoryBundle:Commentary');
-        $comments = $repoCom->findBy(array('trick' => $id));
+        $comments = $repoCom->findBy(array('trick' => $tricks->getId()));
 
         foreach($comments as $comment)
         {

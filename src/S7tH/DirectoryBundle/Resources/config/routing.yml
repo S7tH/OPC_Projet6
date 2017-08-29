@@ -24,9 +24,21 @@ s7t_h_directory_admin:
     path:     /admin
     defaults: { _controller: S7tHDirectoryBundle:Admin:index }
 
+s7t_h_directory_adminlist:
+    path:     /admin-list-category
+    defaults: { _controller: S7tHDirectoryBundle:Admin:list }
+
 s7t_h_directory_adminadd:
-    path:     /admin-category
+    path:     /admin-add-category
     defaults: { _controller: S7tHDirectoryBundle:Admin:add }
+
+s7t_h_directory_adminedit:
+    path:     /admin-edit-category/{id}
+    defaults: { _controller: S7tHDirectoryBundle:Admin:edit }
+
+s7t_h_directory_admindelete:
+    path:     /admin-delete-category/{id}
+    defaults: { _controller: S7tHDirectoryBundle:Admin:delete }
 
 s7t_h_directory_adminmember:
     path:     /admin-members

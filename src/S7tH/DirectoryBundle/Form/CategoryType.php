@@ -26,6 +26,7 @@ class CategoryType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
+            'intention' => 'task_form',
             'data_class' => 'S7tH\DirectoryBundle\Entity\Category'
         ));
     }
