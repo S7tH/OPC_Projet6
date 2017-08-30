@@ -23,7 +23,7 @@ monolog:
             level: debug
         swift:
             type: swift_mailer
-            from_email: FQN@foo.com
+            from_email: snowtrickmania@feedback.com
             to_email: aurelien.theriot@gmail.com
             subject: "OOps"
             level: debug

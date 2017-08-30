@@ -93,6 +93,9 @@ fos_user:
     registration:
         form:
             type: S7tH\UserBundle\Form\RegistrationType
+    profile:
+        form:
+            type: S7tH\UserBundle\Form\ProfileType
 
 #Gravatar
 ornicar_gravatar: ~

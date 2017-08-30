@@ -28,8 +28,8 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="gravatar", type="string", length=40, unique=true)
-     * @Assert\NotBlank(message="Merci d'entrer votre adresse gravatar.", groups={"Registration", "Profile"})
+     * @ORM\Column(name="gravatar", type="string", length=40, nullable=true)
+     * @Assert\Email()
      */
     protected $gravatar;
 

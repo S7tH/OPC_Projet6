@@ -133,8 +133,7 @@ class TricksController extends Controller
         // with param converter this lines are useless
         */
 
-       
-        
+
         //we recover the user instance for our commentary
         $user = $this->getUser();
         $commentary = null;
@@ -151,7 +150,7 @@ class TricksController extends Controller
         
         //create the formBuilder
         $form = $this->get('form.factory')->create(CommentaryType::class, $commentary);
-        
+
         //if a commentary form has been send we save the commentary after a check up on it.
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {

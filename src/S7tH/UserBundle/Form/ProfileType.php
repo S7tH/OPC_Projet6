@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RegistrationType extends AbstractType
+class ProfileType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -25,7 +25,7 @@ class RegistrationType extends AbstractType
     //we use this function to use the Fos form with this one
     public function getParent()
     {
-        return 'FOS\UserBundle\Form\Type\RegistrationFormType';
+        return 'FOS\UserBundle\Form\Type\ProfileFormType';
     }
 
     /**
@@ -43,7 +43,7 @@ class RegistrationType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 's7th_userbundle_registration';
+        return 's7th_userbundle_profile';
     }
 
 
