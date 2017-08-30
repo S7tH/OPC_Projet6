@@ -45,6 +45,7 @@ class TricksType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
+            'intention' => 'task_form',/*csrf key uniq per form*/
             'data_class' => 'S7tH\DirectoryBundle\Entity\Tricks'
         ));
     }

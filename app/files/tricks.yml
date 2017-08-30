@@ -1,10 +1,22 @@
 "Mute":
     category: Grabs
     description: Saisie de la carre frontside de la planche entre les deux pieds avec la main avant.
+        <p>&nbsp;</p>
+        <p><img src="http://sondahl.com/skijump.jpg" alt="Mute" width="600" height="446" /></p>
+        <p>&nbsp;</p>
+        <p>Voici une vid&eacute;o explicative :</p>
+        <p>&nbsp;</p>
+        <p><iframe src="https://www.youtube.com/embed/xjOfp0abxMc?ecver=1" width="600" height="360" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
 
 "Sad":
-     category: Grabs
-     description: Saisie de la carre backside de la planche, entre les deux pieds, avec la main avant.
+    category: Grabs
+    description: Saisie de la carre backside de la planche, entre les deux pieds, avec la main avant.
+        <p>&nbsp;</p>
+        <p><img src="http://cdn.snowboarding.transworld.net/blogs.dir/442/files/2015/05/Sad_Johnny_Brady_Side_Fenelon.jpg" alt="Sad" width="600" height="446" /></p>
+        <p>Voici une vid&eacute;o explicative :</p>
+        <p>&nbsp;</p>
+        <p><iframe width="600" height="360" src="https://www.youtube.com/embed/KEdFwJ4SWq4?ecver=1" frameborder="0" allowfullscreen></iframe></p>
+
 
 "Melancholie":
      category: Grabs

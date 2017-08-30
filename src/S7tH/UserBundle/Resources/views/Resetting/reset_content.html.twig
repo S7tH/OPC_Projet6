@@ -6,14 +6,14 @@
     
     <div class="col-xs-12 log-frame">
         {# label generating #}
-        {{ form_label(form.plainPassword.first, "*Votre nouveau mot de passe", {'label_attr': {'class': 'col-xs-4 log-label'}}) }}
+        {{ form_label(form.plainPassword.first, "* Votre nouveau mot de passe", {'label_attr': {'class': 'col-xs-4 log-label'}}) }}
         {# input generating #}
         {{ form_widget(form.plainPassword.first, {'attr': {'class': 'col-xs-8 log-field'}}) }}
     </div>
 
     <div class="col-xs-12 log-frame">
         {# label generating #}
-        {{ form_label(form.plainPassword.second, "*Confirmez votre nouveau mot de passe", {'label_attr': {'class': 'col-xs-4 log-label'}}) }}
+        {{ form_label(form.plainPassword.second, "* Confirmez votre nouveau mot de passe", {'label_attr': {'class': 'col-xs-4 log-label'}}) }}
         {# input generating #}
         {{ form_widget(form.plainPassword.second, {'attr': {'class': 'col-xs-8 log-field'}}) }}
     </div>
