@@ -20,5 +20,3 @@ A Symfony project created on June 28, 2017, 12:49 pm.
         (remove --super-admin if you want create a simple account without rights)
 
     5) Import a sample of several pre-made tricks : "php bin/console tricks:specimen"
-
-The site is operational
