@@ -20,9 +20,10 @@ After copied this repository github from this address https://github.com/S7tH/OP
         php bin/console fos:user:create yournameuser yourmail@example.com yourpassword --super-admin
 
         (remove --super-admin if you want create a simple account without rights)
-
+        
     5) Import a sample of several pre-made tricks : "php bin/console tricks:specimen"
 
     In prod mod, remove the file config.php in the web folder
 
 The site is operational
+
