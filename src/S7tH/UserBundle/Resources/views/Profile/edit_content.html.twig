@@ -5,14 +5,14 @@
     
     <div class="col-xs-12 log-frame">
         {# label generating #}
-        {{ form_label(form.username, "*Votre pseudo", {'label_attr': {'class': 'col-xs-4 log-label'}}) }}
+        {{ form_label(form.username, "* Votre pseudo", {'label_attr': {'class': 'col-xs-4 log-label'}}) }}
         {# input generating #}
         {{ form_widget(form.username, {'attr': {'class': 'col-xs-8 log-field'}}) }}
     </div>
 
     <div class="col-xs-12 log-frame">
         {# label generating #}
-        {{ form_label(form.email, "*Votre adresse e-mail", {'label_attr': {'class': 'col-xs-4 log-label'}}) }}
+        {{ form_label(form.email, "* Votre adresse e-mail", {'label_attr': {'class': 'col-xs-4 log-label'}}) }}
         {# input generating #}
         {{ form_widget(form.email, {'attr': {'class': 'col-xs-8 log-field'}}) }}
     </div>
@@ -26,7 +26,7 @@
 
     <div class="col-xs-12 log-frame">
         {# label generating #}
-        {{ form_label(form.current_password, "*Votre mot de passe actuel", {'label_attr': {'class': 'col-xs-4 log-label'}}) }}
+        {{ form_label(form.current_password, "* Votre mot de passe actuel", {'label_attr': {'class': 'col-xs-4 log-label'}}) }}
         {# input generating #}
         {{ form_widget(form.current_password, {'attr': {'class': 'col-xs-8 log-field'}}) }}
     </div>
