@@ -32,7 +32,6 @@ class Image
      * @var string
      *
      * @ORM\Column(name="url", type="string", length=255)
-     * @Assert\Url()
      */
     private $url;
 
@@ -40,7 +39,6 @@ class Image
      * @var string
      *
      * @ORM\Column(name="alt", type="string", length=255)
-     * @Assert\NotBlank()
      */
     private $alt;
 
@@ -50,15 +48,23 @@ class Image
     /** 
      * @var UploadedFile
      *
-     * @Assert\Image(maxSize=200, maxWidth=400, maxHeight= 400)
+     * @Assert\Image(maxSize=1000000, maxWidth=640,minWidth=640, maxHeight= 480, minHeight= 480)
      */
     private $file;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="specimen", type="boolean")
+     */
+    private $specimen;
+    
+    
     /*attribut for save temporarily the name of file
     before deleting of trick with this file.*/
     private $tempFilename;
 
-
+  
     /**
      * Get id
      *
@@ -137,6 +143,7 @@ class Image
         $this->alt = null;
         }
     }
+
 
     /**
     * @ORM\PrePersist()
@@ -225,4 +232,13 @@ class Image
     {
         return $this->getUploadDir().'/'.$this->getId().'.'.$this->getUrl();
     }
+
+
+    
+    //method for write only WebSpecimenPath for our specimen tricks url as var on our Twig view
+    public function getWebSpecimenPath()
+    {
+        return 'bundles/s7thdirectory/img/'.$this->getAlt().'.'.$this->getUrl();
+    }
+
 }

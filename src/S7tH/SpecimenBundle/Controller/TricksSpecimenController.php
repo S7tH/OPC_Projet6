@@ -5,6 +5,7 @@ namespace S7tH\SpecimenBundle\Controller;
 /*my entities*/
 use S7tH\DirectoryBundle\Entity\Tricks;
 use S7tH\DirectoryBundle\Entity\Category;
+use S7tH\DirectoryBundle\Entity\Image;
 
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Yaml\Yaml;
@@ -27,6 +28,8 @@ class TricksSpecimenController extends Controller
         // Instantiate the entities
         $trick = new Tricks();
         $category = new Category();
+        $image = new Image();
+
 
         foreach ($finder as $trickfile) 
         {
@@ -42,26 +45,42 @@ class TricksSpecimenController extends Controller
         //We recover the categories
         foreach($contentfile as $element => $content)
         {
-            // Clone the entity to respect the loop.
+            //recover the entity with the same name for check if is already exist in the db
+            $findname = $repoCategory->findOneBy(array('name' => $content['category']));
+
+             // Clone the entity to respect the loop.
             $categories = clone $category;
             $categories->setName($content['category']);
+            $catName = $categories->getName();
 
-            //recover the name of the category object for check if is already exist or not
-            $catname = $categories->getName();
-
-            //recover the entity with the same name
-            $findname = $repoCategory->findOneBy(array('name' => $catname));
-            
-
-            // if the id don't exist we save the new category else he is already exist in the db
-            if ($findname === null)
+            //we check if the name of this category is not already persisted
+            if($findname === null)
             {
-                //create the request sql for each entity
                 $em->persist($categories);
                 //send the requests and save our categories in the db
                 $em->flush();
             }
         }
+        
+
+        //we call the repository for call our entities in the db
+        $repoImage = $em->getRepository('S7tHDirectoryBundle:Image');
+
+        //We recover the categories
+        foreach($contentfile as $element => $content)
+        {
+            // Clone the entity to respect the loop.
+            $images = clone $image;
+            $images->setUrl($content['url']);
+            $images->setAlt($content['alt']);
+            $images->setSpecimen($content['specimen']);
+
+            //create the request sql for each entity
+            $em->persist($images);
+        }
+        //send the requests and save our categories in the db
+        $em->flush();
+        
   
         foreach($contentfile as $element => $content)
         {
@@ -69,6 +88,9 @@ class TricksSpecimenController extends Controller
             $tricks = clone $trick;
             $tricks->setName($element);
             $tricks->setDescription($content['description']);
+
+            $img = $repoImage->findOneBy(array('alt' => $content['alt']));
+            $tricks->setImage($img);
 
             $cat = $repoCategory->findOneBy(array('name' => $content['category']));
             $tricks->setCategory($cat);

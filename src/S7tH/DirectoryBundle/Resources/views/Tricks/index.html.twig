@@ -78,10 +78,10 @@
                                 <a href="{{ path('s7t_h_directory_trickview', {'id':tricks.id, 'page': 1}) }}">
                                               
                                 <div class="row col-xs-10 col-sm-5 trickelmt">
-                                    {% if tricks.image.webPath is defined %}
-                                        <img class="clearfix hidden-xs col-sm-6 table-condensed img-rules" src="{{ asset(tricks.image.webPath) }}" alt="{{ tricks.image.alt }}">
+                                    {% if tricks.image.specimen == true %}
+                                        <img class="clearfix hidden-xs col-sm-6 table-condensed img-rules" src="{{ asset(tricks.image.webSpecimenPath) }}" alt="{{ tricks.image.alt }}"/>
                                     {% else %}
-                                        <img class="clearfix hidden-xs col-sm-6 table-condensed img-rules" src="{{ asset("bundles/s7thdirectory/img/") }}specimen{{random(5)}}.jpeg" alt="trick :"/>
+                                        <img class="clearfix hidden-xs col-sm-6 table-condensed img-rules" src="{{ asset(tricks.image.webPath) }}" alt="{{ tricks.image.alt }}">
                                     {% endif %}
                                    
                                     
