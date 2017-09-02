@@ -195,33 +195,43 @@ class TricksController extends Controller
         ));
     }
 
-    public function deleteAction(Tricks $tricks, Request $request)
+    public function deleteAction(Tricks $tricks,$state, Request $request)
     {
-        //recover the entity manager
-        $em = $this->getDoctrine()->getManager();
-
-        //we recover and check if the trick is linked to commentaries
-        $repoCom = $em->getRepository('S7tHDirectoryBundle:Commentary');
-        $comments = $repoCom->findBy(array('trick' => $tricks->getId()));
-
-        foreach($comments as $comment)
-        {
-            // if the trick_id exist
-            if(null !== $comment)
-            {
-                //we delete our entity from the db
-                $em->remove($comment);//create the request sql for deleting
-            }
-        }
- 
-        //we delete our entity from the db
-        $em->remove($tricks);//create the request sql for deleting
-        $em->flush();//send the request and delete our object in the db
-
-        $request->getSession()->getFlashBag()->add('notice', 'Trick bien supprimé.');
-
-        // We are displaying now the homepage page thanks a redirection to its route.
-        return $this->redirectToRoute('s7t_h_directory_tricklist');
         
+        if($state == 'confirm')
+        {
+            return $this->render('S7tHDirectoryBundle:Tricks:delete.html.twig',
+             array(
+                'tricks' => $tricks
+            ));
+        }
+        else
+        {
+            //recover the entity manager
+            $em = $this->getDoctrine()->getManager();
+
+            //we recover and check if the trick is linked to commentaries
+            $repoCom = $em->getRepository('S7tHDirectoryBundle:Commentary');
+            $comments = $repoCom->findBy(array('trick' => $tricks->getId()));
+
+            foreach($comments as $comment)
+            {
+                // if the trick_id exist
+                if(null !== $comment)
+                {
+                    //we delete our entity from the db
+                    $em->remove($comment);//create the request sql for deleting
+                }
+            }
+ 
+            //we delete our entity from the db
+            $em->remove($tricks);//create the request sql for deleting
+            $em->flush();//send the request and delete our object in the db
+
+            $request->getSession()->getFlashBag()->add('notice', 'Trick bien supprimé.');
+
+            // We are displaying now the homepage page thanks a redirection to its route.
+            return $this->redirectToRoute('s7t_h_directory_tricklist');
+        }
     }
 }

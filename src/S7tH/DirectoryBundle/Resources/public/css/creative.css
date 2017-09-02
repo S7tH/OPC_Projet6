@@ -459,32 +459,13 @@ input[type="hidden"], input[type="image"], input[type="file"] {
 .trickframe a
 {
   text-decoration-line: none;
-  color: snow;
+  color: inherit;
 }
 
 .trickframe a:hover
 {
-  color: #82c44c;
+  color: snow;
 }
-
-.trickelmt
-{
-  height: 135px;
-  border: 2px ridge snow;
-  border-radius: 28px;
-  background-color: #33355b;
-  padding: 4%;
-  margin-bottom:2%;
-  margin-top:2%;
-  margin-left:5%;
-  text-align: center;
-}
-
-.trickelmt:hover
-{
-  border: 2px ridge #82c44c;
-}
-
 
 .trickemptystart
 {
@@ -496,9 +477,69 @@ input[type="hidden"], input[type="image"], input[type="file"] {
   height: 50px;
 }
 
+.trickelmt
+{
+  position: relative;
+  height: 135px;
+  border: 2px ridge snow;
+  border-radius: 28px;
+  background-color: #33355b;
+  margin-bottom:2%;
+  margin-top:2%;
+  margin-left:5%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.trickelmt:hover
+{
+  border: 2px ridge #82c44c;
+}
+
 .img-rules
 {
-  border-radius: 40px;
+  position: absolute;
+  width: 100%;
+  height: 135px;
+  z-index: 1;
+  left:0px;
+  opacity: 0.3;
+}
+
+.tricks-name
+{
+  font-size: 1.4em;
+  color: #82c44c;
+  padding: 1%;
+  position: absolute;
+  top:20px;
+  left:1%;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  text-shadow: 2px 2px 2px black;
+}
+
+.tricks-name:hover
+{
+  color:snow;
+}
+.tricks-options
+{
+  font-size: 1em;
+  color: snow;
+  position: absolute;
+  top:50px;
+  left:90px;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  text-shadow: 2px 2px 2px black;
+}
+
+.tricks-options:hover
+{
+  color:#82c44c;
 }
 
 

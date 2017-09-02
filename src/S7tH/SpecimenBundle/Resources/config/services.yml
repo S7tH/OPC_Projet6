@@ -1,3 +1,6 @@
+parameters:
+    specimen_path: '%kernel.root_dir%/../app/files'
+
 services:
     s7th.tricks.specimen:
         class: S7tH\SpecimenBundle\Controller\TricksSpecimenController

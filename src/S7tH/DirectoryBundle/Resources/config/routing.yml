@@ -11,8 +11,10 @@ s7t_h_directory_trickedit:
     defaults: { _controller: S7tHDirectoryBundle:Tricks:edit }
 
 s7t_h_directory_trickdelete:
-    path:     /trick-delete/{id}
+    path:     /trick-delete/{id}/{state}
     defaults: { _controller: S7tHDirectoryBundle:Tricks:delete }
+    requirements:
+        state: confirm|delete
 
 s7t_h_directory_trickview:
     path:     /trick-view/number-{id}/page-{page}

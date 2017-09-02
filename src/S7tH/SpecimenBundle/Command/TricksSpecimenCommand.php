@@ -23,9 +23,12 @@ class TricksSpecimenCommand extends ContainerAwareCommand
             ->writeln('loading of tricks specimen...');
         
         //recover the tricks service and launch it
+        $container = $this->getContainer();
+        $service= $container->get('s7th.tricks.specimen');
+        //recover the kernel root
+        $rootParameter = $container->getParameter('specimen_path');
 
-        $service = $this->getContainer()->get('s7th.tricks.specimen');
-        $ret = $service->loadspecimenAction();
+        $ret = $service->loadspecimenAction($rootParameter);
         $output->writeln('<info>'.$ret.'</info>');
 
 

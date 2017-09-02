@@ -45,6 +45,19 @@
     description: Le tindy prend un coup de pouce controversé, et le nom est un portmanteau de 'queue' et 'indy'. La main à la traîne entre la liaison arrière et la queue sur le bord du pied.
     specimen: true
 
+"Tailgrab":
+    url: jpeg
+    alt: tail
+    category: Grabs
+    description: La main arrière saisit la queue du tableau. Les variations incluent le redressement, ou le «désossage» de la jambe avant, ou «ajuster» le panneau légèrement en face ou en arrière.
+        <p>&nbsp;</p>
+        À l'opposé de la prise du nez, il suffit d'atteindre la queue de votre planche avec votre main arrière et de vous occuper de votre vie. Terminez celui-ci tout en continuant à saisir et vous accédez automatiquement à la salle de snowboard de la renommée. Dans votre propre tête.
+        <p>&nbsp;</p>
+        <p>Voici une vid&eacute;o explicative :</p>
+        <p>&nbsp;</p>
+        <p><iframe src="https://www.youtube.com/embed/id8VKl9RVQw?ecver=1" width="600" height="360" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+    specimen: true
+
 "Indy":
     url: jpeg
     alt: indy
@@ -119,17 +132,3 @@
         <p>&nbsp;</p>
         <p><iframe src="https://www.youtube.com/embed/vxBfXyQ_MB4?ecver=1" width="600" height="360" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
     specimen: true
-
-"Tailgrab":
-    url: jpeg
-    alt: tail
-    category: Grabs
-    description: La main arrière saisit la queue du tableau. Les variations incluent le redressement, ou le «désossage» de la jambe avant, ou «ajuster» le panneau légèrement en face ou en arrière.
-        <p>&nbsp;</p>
-        À l'opposé de la prise du nez, il suffit d'atteindre la queue de votre planche avec votre main arrière et de vous occuper de votre vie. Terminez celui-ci tout en continuant à saisir et vous accédez automatiquement à la salle de snowboard de la renommée. Dans votre propre tête.
-        <p>&nbsp;</p>
-        <p>Voici une vid&eacute;o explicative :</p>
-        <p>&nbsp;</p>
-        <p><iframe src="https://www.youtube.com/embed/id8VKl9RVQw?ecver=1" width="600" height="360" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
-    specimen: true
-
