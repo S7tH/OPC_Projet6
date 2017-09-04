@@ -443,48 +443,69 @@ input[type="hidden"], input[type="image"], input[type="file"] {
   border: 2px ridge snow;
 }
 
+@keyframes trickframestart
+{
+    0% {
+          height: 50px;
+          border-radius:5px;
+    }
+
+    50% {
+          height: 250px;
+          background-color: rgba(25,225,225,0.2);
+          border-radius:10px;
+          background-color: rgba(25,225,225,0.8);
+    }
+
+    100% {
+          height: 100%;
+          background-color: rgba(25,225,225,0.3);
+          border-radius:20px;
+           color: snow;
+    }
+
+}
+
+@keyframes trickframeend
+{
+    0% {
+          height: 100%;
+          background-color: rgba(25,225,225,0.2);
+          border-radius:20px;
+    }
+    50% {
+          height: 250px;
+          background-color: rgba(25,225,225,0.1);
+          border-radius:10px;
+    }
+    100% {
+          height: 50px;
+    }
+}
+
 .trickframe
 {
   padding: 2%;
-  height:50px;
   overflow: hidden;
+  animation:trickframeend 2s forwards;
 }
 
 .trickframe:hover
 {
-  height: 100%;
-  border-radius:20px;
+  animation:trickframestart 2s forwards; 
 }
+
 
 .trickframe a
 {
   text-decoration-line: none;
-  color: snow;
+  color: inherit;
 }
 
 .trickframe a:hover
 {
-  color: #82c44c;
+  color: snow;
 }
-
-.trickelmt
-{
-  height: 135px;
-  border: 2px ridge snow;
-  border-radius: 28px;
-  background-color: #33355b;
-  padding: 4%;
-  margin-bottom:2%;
-  margin-top:2%;
-  margin-left:5%;
-  text-align: center;
-}
-
-.trickelmt:hover
-{
-  border: 2px ridge #82c44c;
-}
-
 
 .trickemptystart
 {
@@ -493,20 +514,78 @@ input[type="hidden"], input[type="image"], input[type="file"] {
 
 .trickemptyend
 {
-  height: 50px;
+  height: 80px;
 }
 
-.frame-trick
+.trickelmt
 {
-  height:480px;
+  position: relative;
+  height: 135px;
+  border: 2px ridge snow;
+  border-radius: 28px;
+  background-color: #33355b;
+  margin-bottom:2%;
+  margin-top:2%;
+  margin-left:5%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.trickelmt:hover
+{
+  border: 2px ridge #82c44c;
 }
 
 .img-rules
 {
-  border-radius: 40px;
+  position: absolute;
   width: 100%;
-  height:100px;
+  height: 135px;
   z-index: 1;
+  left:0px;
+  opacity: 0.3;
+}
+
+.tricks-name
+{
+  font-size: 1.4em;
+  color: #82c44c;
+  padding: 1%;
+  position: absolute;
+  top:20px;
+  left:1%;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  text-shadow: 2px 2px 2px black;
+}
+
+.tricks-name:hover
+{
+  color:snow;
+}
+.tricks-options
+{
+  font-size: 1em;
+  color: snow;
+  position: absolute;
+  top:50px;
+  left:90px;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  text-shadow: 2px 2px 2px black;
+}
+
+.tricks-options:hover
+{
+  color:#82c44c;
+}
+
+
+.frame-trick
+{
+  height:480px;
 }
 
 .img-trick
@@ -703,6 +782,13 @@ input[type="hidden"], input[type="image"], input[type="file"] {
     background-color: #33355b;
     font-weight: bold;
     text-align: left;
+}
+
+
+.control-errors
+{
+  color: #eb3812;
+  font-weight: bold;
 }
 
 .btn-reverso {

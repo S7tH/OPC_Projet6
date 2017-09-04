@@ -7,9 +7,15 @@
     <li>
         <a class="page-scroll" href="#tricks"><span class="glyphicon glyphicon-sunglasses"></span> Les Tricks</a>
     </li>
-    <li>
-       <a class="page-scroll" href="#newtrick"><span class="glyphicon glyphicon-edit"></span> Créer un Trick</a>
-    </li>
+    {% if is_granted('ROLE_USER') %}
+        <li>
+            <a href="{{ path('s7t_h_directory_trickadd') }}"><span class="glyphicon glyphicon-tree-conifer"></span> Créer un trick Trick</a>
+        </li>
+    {% else %}
+        <li>
+            <a class="page-scroll" href="#newtrick"><span class="glyphicon glyphicon-tree-conifer"></span> Ajouter un Trick ?</a>
+        </li>
+    {% endif %}
     <li>
         <a class="page-scroll" href="#footer"><span class="glyphicon glyphicon-envelope"></span> Contact</a>
     </li>

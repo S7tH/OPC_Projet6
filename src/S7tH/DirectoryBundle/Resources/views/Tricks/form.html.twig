@@ -1,4 +1,6 @@
-<div class="well wellmore">
+{% form_theme form "::form/fields.html.twig" %}
+
+<div class="well">
   {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
 
   {# general errors of the form #}
@@ -6,8 +8,9 @@
 
 
   <div class="form-group">
-    <br/>
-    <p class="message">L'image du trick doit être de taille 640x480 et poid de 1MB maximum</p>
+    <p class="msg-form">Votre trick doit avoir une image de présentation qui doit être de taille absolue 640x480 et un poid de 1MB maximum 
+      <br/>
+      (Image obligatoire seulement pour la création d'un nouveau trick)</p>
     {# label generating #}
     {{ form_label(form.image, "Image du trick", {'label_attr': {'class': 'adit-file col-sm-2 control-label'}}) }}
 

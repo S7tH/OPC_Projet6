@@ -408,10 +408,6 @@ select {
   background-color: #33355b;
 }
 
-.well
-{
-  background-color: #33355b;
-}
 
 input[type="hidden"], input[type="image"], input[type="file"] {
     -webkit-appearance: initial;
@@ -443,18 +439,54 @@ input[type="hidden"], input[type="image"], input[type="file"] {
   border: 2px ridge snow;
 }
 
+@keyframes trickframestart
+{
+    0% {
+          border-radius:5px;
+    }
+
+    50% {
+          background-color: rgba(25,225,225,0.2);
+          border-radius:10px;
+          background-color: rgba(25,225,225,0.8);
+    }
+
+    100% {
+          background-color: rgba(25,225,225,0.3);
+          border-radius:20px;
+           color: snow;
+    }
+
+}
+
+@keyframes trickframeend
+{
+    0% {
+          height: 100%;
+          border-radius:20px;
+    }
+    50% {
+          height: 250px;
+          border-radius:10px;
+    }
+    100% {
+          height: 50px;
+    }
+}
+
 .trickframe
 {
   padding: 2%;
-  height:50px;
   overflow: hidden;
+  animation:trickframeend 0.7s 0.5s forwards;
 }
 
 .trickframe:hover
 {
   height: 100%;
-  border-radius:20px;
+  animation:trickframestart 0.2s forwards; 
 }
+
 
 .trickframe a
 {
@@ -474,7 +506,7 @@ input[type="hidden"], input[type="image"], input[type="file"] {
 
 .trickemptyend
 {
-  height: 50px;
+  height: 30px;
 }
 
 .trickelmt
@@ -743,6 +775,31 @@ input[type="hidden"], input[type="image"], input[type="file"] {
     font-weight: bold;
     text-align: left;
 }
+
+/* form */
+
+.well
+{
+  background-color: #33355b;
+}
+
+.form-group::before
+{
+  padding:1%;
+}
+
+header .header-content .header-content-inner p
+{
+  color: snow;
+  text-shadow: 1px 1px 1px black;
+}
+.control-errors
+{
+  color: #eb3812;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px black;
+}
+/* endform */
 
 .btn-reverso {
   color: #82c44c;
