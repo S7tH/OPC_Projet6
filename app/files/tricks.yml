@@ -1,14 +1,21 @@
 "Mute":
+    url: jpeg
+    alt: mute
     category: Grabs
     description: Saisie de la carre frontside de la planche entre les deux pieds avec la main avant.
+        <p>&nbsp;</p>
+        Prenez votre main de tête et saisissez votre bord de pied n'importe où entre les liaisons. Rincez les deux jambes et faites un «stiffie», ou redressez votre jambe avant uniquement (comme Dom ici) et vous faites un poke muet de nez. Deux astuces pour le prix d'une, hein?
         <p>&nbsp;</p>
         <p><img src="http://sondahl.com/skijump.jpg" alt="Mute" width="600" height="446" /></p>
         <p>&nbsp;</p>
         <p>Voici une vid&eacute;o explicative :</p>
         <p>&nbsp;</p>
         <p><iframe src="https://www.youtube.com/embed/xjOfp0abxMc?ecver=1" width="600" height="360" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+    specimen: true
 
 "Sad":
+    url: jpeg
+    alt: sad
     category: Grabs
     description: Saisie de la carre backside de la planche, entre les deux pieds, avec la main avant.
         <p>&nbsp;</p>
@@ -16,41 +23,113 @@
         <p>Voici une vid&eacute;o explicative :</p>
         <p>&nbsp;</p>
         <p><iframe width="600" height="360" src="https://www.youtube.com/embed/KEdFwJ4SWq4?ecver=1" frameborder="0" allowfullscreen></iframe></p>
-
+    specimen: true
 
 "Melancholie":
-     category: Grabs
-     description: Saisie de la carre backside de la planche, entre les deux pieds, avec la main avant.
+    url: jpeg
+    alt: melancolie
+    category: Grabs
+    description: Saisie de la carre backside de la planche, entre les deux pieds, avec la main avant.
+        <p>&nbsp;</p>
+        Une bonne prise de Melancollie est comme un indy, intemporel. Placez-vous sur le bord de votre talon en utilisant votre main de tête et saisissez-vous entre vos attaches. Il se sentira probablement le plus simple juste derrière le pied avant. Ensuite, abaissez votre jambe avant. Un coup de foudre de bonheur vous fait sentir comme un maître Kung Fu qui lance un coup de pied volant.
+        <p>&nbsp;</p>
+        <p>Voici une vid&eacute;o explicative :</p>
+        <p>&nbsp;</p>
+        <p><iframe src="https://www.youtube.com/embed/ljAaBNb13LU?ecver=1" width="600" height="360" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+    specimen: true
 
-"Style week":
-     category: Grabs
-     description: Saisie de la carre backside de la planche, entre les deux pieds, avec la main avant.
+"Tindy":
+    url: jpeg
+    alt: tindy
+    category: Grabs
+    description: Le tindy prend un coup de pouce controversé, et le nom est un portmanteau de 'queue' et 'indy'. La main à la traîne entre la liaison arrière et la queue sur le bord du pied.
+    specimen: true
 
 "Indy":
-     category: Grabs
-     description: Saisie de la carre frontside de la planche, entre les deux pieds, avec la main arrière.
+    url: jpeg
+    alt: indy
+    category: Grabs
+    description: Saisie de la carre frontside de la planche, entre les deux pieds, avec la main arrière.
+        <p>&nbsp;</p>
+        L'Indy est une saisie classique. Accédez à votre main arrière et obtenez un achat sur votre bord entre vos liaisons. Ensuite, pour ajouter un style, enfoncez votre jambe avant tout droit. C'est bien vivre.
+        <p>&nbsp;</p>
+        <p>Voici une vid&eacute;o explicative :</p>
+        <p>&nbsp;</p>
+        <p><iframe src="https://www.youtube.com/embed/iKkhKekZNQ8?ecver=1" width="600" height="360" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+    specimen: true
 
 "Stalefish":
-     category: Grabs
-     description: Saisie de la carre backside de la planche entre les deux pieds avec la main arrière.
+    url: jpeg
+    alt: stalefish
+    category: Grabs
+    description: Saisie de la carre backside de la planche entre les deux pieds avec la main arrière.
+        <p>&nbsp;</p>
+        Un autre classique - maintenez votre talon entre vos attaches en utilisant votre main arrière. Astuce "parce que c'est un étirement pour atteindre derrière votre reliure arrière, enfoncez votre pied arrière en même temps. C'est aussi le style extra de cette manière."
+        <p>&nbsp;</p>
+        <p>Voici une vid&eacute;o explicative :</p>
+        <p>&nbsp;</p>
+        <p><iframe src="https://www.youtube.com/embed/9AU5Yrlk5aY?ecver=1" width="600" height="360" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+    specimen: true
 
 
 "180":
-     category: Rotations
-     description: Désigne un demi-tour, soit 180 degrés d'angle.
-
-
+    url: jpeg
+    alt: 180
+    category: Rotations
+    description: Désigne un demi-tour, soit 180 degrés d'angle.
+        <p>&nbsp;</p>
+        <p>Voici une vid&eacute;o explicative :</p>
+        <p>&nbsp;</p>
+        <p><iframe src="https://www.youtube.com/embed/Hb-X84nrNig?ecver=1" width="600" height="360" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+    specimen: true
 
 "Backflip":
+    url: jpeg
+    alt: backflip
     category: Flip
     description: Pour une rotation en arrière.
-
+        <p>&nbsp;</p>
+        <p>Voici une vid&eacute;o explicative :</p>
+        <p>&nbsp;</p>
+        <p><iframe src="https://www.youtube.com/embed/5bpzng08nzk?ecver=1" width="600" height="360" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+    specimen: true
 
 "Nose slide":
+    url: jpeg
+    alt: nose
     category: Slides
     description: Slide avec le nez de la planche sur la barre.
-
+        <p>&nbsp;</p>
+        Comme vous vous attendez, prenez le devant (ou le «nez») de votre carte avec votre main de tête. Les puristes (et il y a beaucoup de gens qui gardent la pureté de ces objets) insistent sur le fait que les chevilles les plus visibles se tiennent à la pointe de votre conseil d'administration, et pas seulement à proximité. 
+        <p>&nbsp;</p>
+        <p>Voici une vid&eacute;o explicative :</p>
+        <p>&nbsp;</p>
+        <p><iframe src="https://www.youtube.com/embed/M-W7Pmo-YMY?ecver=1" width="600" height="360" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+    specimen: true
 
 "Japan air":
+    url: jpeg
+    alt: japan
     category: Old School
     description: Saisie de la planche au centre avec fléchissement des jambes vers l'arrière et bombage du torse en avant pour se propuler.
+        <p>&nbsp;</p>
+        Pour ce faire correctement, vous devrez être très flexible. Tout d'abord, obtenez la planche de côté (comme une méthode), puis passez autour de votre genou avant replié avec votre main de tête, saisissant le bord du pied entre les liaisons. Une fois que vous avez une bonne adhérence sur le tableau, tirez tout et en arrière, vous contorsionnez dans une forme omnipotente. 
+        <p>&nbsp;</p>
+        <p>Voici une vid&eacute;o explicative :</p>
+        <p>&nbsp;</p>
+        <p><iframe src="https://www.youtube.com/embed/vxBfXyQ_MB4?ecver=1" width="600" height="360" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+    specimen: true
+
+"Tailgrab":
+    url: jpeg
+    alt: tail
+    category: Grabs
+    description: La main arrière saisit la queue du tableau. Les variations incluent le redressement, ou le «désossage» de la jambe avant, ou «ajuster» le panneau légèrement en face ou en arrière.
+        <p>&nbsp;</p>
+        À l'opposé de la prise du nez, il suffit d'atteindre la queue de votre planche avec votre main arrière et de vous occuper de votre vie. Terminez celui-ci tout en continuant à saisir et vous accédez automatiquement à la salle de snowboard de la renommée. Dans votre propre tête.
+        <p>&nbsp;</p>
+        <p>Voici une vid&eacute;o explicative :</p>
+        <p>&nbsp;</p>
+        <p><iframe src="https://www.youtube.com/embed/id8VKl9RVQw?ecver=1" width="600" height="360" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+    specimen: true
+

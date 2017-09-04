@@ -37,7 +37,7 @@ class TricksController extends Controller
         //recover all the entities
         //$tricklist = $repository->findAll();
         $tricklist = $repository->tricklist();
-       
+
         
         return $this->render('S7tHDirectoryBundle:Tricks:index.html.twig', array(
             'tricklist' => $tricklist,

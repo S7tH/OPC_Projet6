@@ -52,9 +52,23 @@ class Image
      */
     private $file;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="specimen", type="boolean")
+     */
+    private $specimen;
+    
+    
     /*attribut for save temporarily the name of file
     before deleting of trick with this file.*/
     private $tempFilename;
+
+
+    public function __construct()
+    {
+        $this->specimen = false;
+    }
   
     /**
      * Get id
@@ -132,8 +146,10 @@ class Image
         //Reset the values 
         $this->url = null;
         $this->alt = null;
+
         }
     }
+ 
 
     /**
     * @ORM\PrePersist()
@@ -221,5 +237,36 @@ class Image
     public function getWebPath()
     {
         return $this->getUploadDir().'/'.$this->getId().'.'.$this->getUrl();
+    }
+
+
+    /**
+     * Set specimen
+     *
+     * @param boolean $specimen
+     *
+     * @return Image
+     */
+    public function setSpecimen($specimen)
+    {
+        $this->specimen = $specimen;
+
+        return $this;
+    }
+
+    /**
+     * Get specimen
+     *
+     * @return boolean
+     */
+    public function getSpecimen()
+    {
+        return $this->specimen;
+    }
+
+     //method for write only WebSpecimenPath for our specimen tricks url as var on our Twig view
+    public function getWebSpecimenPath()
+    {
+        return 'bundles/s7thdirectory/img/'.$this->getAlt().'.'.$this->getUrl();
     }
 }

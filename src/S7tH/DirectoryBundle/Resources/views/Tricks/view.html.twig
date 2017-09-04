@@ -28,10 +28,11 @@
             <div>
                 {# Displaying of trick #}
                 <div class="frame-trick clearfix hidden-xs col-sm-offset-1 col-sm-10">
-                    {% if tricks.image.webPath is defined %}
-                        <img class="img-trick" src="{{ asset(trick.image.webPath) }}" alt="{{ trick.image.alt }}"/>
+
+                     {% if trick.image.specimen == true %}
+                        <img class="img-trick" src="{{ asset(trick.image.webSpecimenPath) }}" alt="{{ trick.image.alt }}"/>
                     {% else %}
-                        <img class="img-trick" src="{{ asset("bundles/s7thdirectory/img/") }}specimen{{random(5)}}.jpeg" alt=" "/>
+                        <img class="img-trick" src="{{ asset(trick.image.webPath) }}" alt="{{ trick.image.alt }}">
                     {% endif %}
                     
                     <div class="col-sm-5 trick-category">
