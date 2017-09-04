@@ -51,7 +51,7 @@ class Tricks
 
     /**
      * @ORM\OneToOne(targetEntity="S7tH\DirectoryBundle\Entity\Image", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=false)
      * @Assert\Valid()
      */
     private $image;

@@ -1,11 +1,19 @@
-Snowtrickmania
+Snowtrickmania Project
 ==============
 
-A Symfony project created on June 28, 2017, 12:49 pm.
+A Symfony project created by aurelien Theriot for Jimmy Sweat of ToDo & Co on June 28, 2017, 12:49 pm.
 
-Snowtrickmania
+snowtrickmania.com
 
-A Symfony project created on June 28, 2017, 12:49 pm.
+
+Introduction :
+
+This application is a community site around the snowboard and its tricks.
+
+Professional or neophyte web users will have the opportunity to bring their knowledge in the domain and thus create a huge database on the themes of tricks, or simply to consult it.
+
+
+Install:
 
 After copied this repository github from this address https://github.com/S7tH/OPC_Projet6.git on your computer 
 

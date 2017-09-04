@@ -1,0 +1,29 @@
+{% extends "S7tHDirectoryBundle::layout.html.twig" %}
+
+{% block linkmenu %}
+    <li>
+       <a class="page-scroll" href="{{ path('s7t_h_directory_tricklist') }}"><span class="glyphicon glyphicon-share-alt"></span> Retour à l'accueil</a>
+    </li>
+{% endblock %}
+
+{% block header %}
+    <div class="header-content">
+        <div class="header-content-inner">
+            <div class="col-xs-12 tricktitle"><h3>Supprimer un Trick</h3></div>
+        
+        <div class="well wellmore">
+            <p>
+                Etes-vous certain de vouloir supprimer le trick "{{ tricks.name }}" ?
+            </p>
+
+            <a href="{{ path('s7t_h_directory_trickdelete', {'id':tricks.id,'state':'delete'}) }}" class="btn btn-danger btn-md">
+                Supprimer
+            </a>
+
+            <a href="{{ path('s7t_h_directory_tricklist') }}" class="btn btn-primary btn-md">
+                Annuler
+            </a>
+        </div>
+        </div>
+    </div>
+{% endblock %}
