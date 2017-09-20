@@ -18,7 +18,8 @@ Install:
 After copied this repository github from this address https://github.com/S7tH/OPC_Projet6.git on your computer 
 
     1) Adapt your data base parameters in the following folder : "app/config/parameters.yml"
-
+        -use the commande php composer.phar install to create the vendor
+        
     2 )Create your Databse with the following command : "php bin/console doctrine:database:create"
 
     3) Generate your tables : "php bin/console doctrine:schema:update --force
